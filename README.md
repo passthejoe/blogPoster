@@ -16,9 +16,23 @@ Future development plans include adding the option to post to static sites gener
 
 But right now I use Ode, and that's what the script works with.
 
+### Uploading to a blog or site via FTP
+
 I'm using FTP to do the uploads, and users of this script should know that it's not the most secure protocol for file transfer. That is something I'd like to work on.
 
 To use this app for posting to your blog, you'll need to enter your FTP login and password in the configuration file `blogPoster_configuration.rb`, which is created when you run the `blogPoster.rb` script for the first time.
 
-Before you use the app to post to Twitter, you need to get [a Twitter Development Account](https://developer.twitter.com/en/docs/basics/developer-portal/overview) which is harder to get than it used to be. Basically you need to tell them that you are using a Ruby script to post tweets from your desktop, and then they should say "OK," and give you the keys/tokens you need to enter in `blogPoster_configuration.rb` to make the app work with Twitter.
+The `blogPoster_configuration.rb` file also requires you to enter the path to at least one directory on your server where you want your static text files to go.
+
+That same configuration file also lets you select your file suffix. I use `.txt`, but you can set this to whatever your blog or site requires.
+
+### Posting to Twitter
+
+Before you use the app to post to Twitter, you need to get access to the Twitter API via a [a Twitter Development Account](https://developer.twitter.com/en/docs/basics/developer-portal/overview), which is harder to get than it used to be.
+
+When you fill out the online form, basically you need to tell them that you are using a Ruby script to post tweets from your desktop, and then they should say "OK," and give you the keys/tokens you need to enter in `blogPoster_configuration.rb` to make the app work with Twitter.
+
+The first time I requested access to the Twitter API, it all went smoothly. All I had to do was tell them what my app was going to do. I had to do this a second time due to changes Twitter made in their API agreement. This time they came back with further questions, and I just restated what I said before. That worked.
+
+**Aside:** I would like to turn this into a graphical app that allows users to log in using their Twitter credentials and not require them to get API access, but that's a project for the future.
 

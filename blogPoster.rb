@@ -305,16 +305,16 @@ menu = ["",
         
             puts "Your file should now be on the server"
             
-            # Ping the blog so entry publishes
+            # If @ping_needed = true, ping the blog so the entry publishes
 
+            if @ping_needed
+                yourWebSiteToPing = @your_website_to_ping
             
-            # yourWebSiteToPing = 'http://stevenrosenberg.net/blog?reindex=y'
-            yourWebSiteToPing = @your_website_to_ping
-            
-            puts "Plus I will ping the blog so this new entry publishes"
-            puts "Pinging now ..."
-            ping_it = open(yourWebSiteToPing).read
-            puts "Pinged ... should be ready"            
+                puts "Plus I will ping the blog so this new entry publishes"
+                puts "Pinging now ..."
+                ping_it = open(yourWebSiteToPing).read
+                puts "Pinged ... should be ready"
+            end
             runmenu
             
         elsif yourTask == 'h'

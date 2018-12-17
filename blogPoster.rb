@@ -1,18 +1,25 @@
 #!/usr/bin/env ruby
 
 # Blog Poster aims to make social and even regular blog posts
-# easy to create. Just entering a URL will generate a full blog
-# post that includes a file with title, body text and link
+# easy to create. Just entering a URL will help yuou generate a full
+# blog post that includes a file with title, body text and link
 # that can be uploaded to the flat-file blogging system of
 # your choice
 #
 # This script is meant to send posts via FTP to a web server
 # for use in an Ode blog, but it can probably be easily modified
-# to create posts for your flat-file dynamic site for Ode-like systems
-# such as its ancestor Bloxsom, and it could even be hacked
+# to create posts for other flat-file dynamic systems, such as
+# Ode's ancestor Bloxsom. It could even be hacked
 # to work with static-blogging systems such as Hugo or Jekyll,
 # where you might want to do a straight file transfer to your
 # local Documents directory and then trigger a build of your site.
+#
+# The other purpose of this script is to send your entry to a
+# social-media service such as Twitter. That is what the script does
+# at this point. You need to open a developer account with Twitter
+# to get access to the service's API. The README for this program
+# has more information on how to do that.
+
 # 
 # More information on Ode: http://ode.io
 #

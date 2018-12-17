@@ -23,8 +23,9 @@
 # 
 # More information on Ode: http://ode.io
 #
-# Steven Rosenberg
-# stevenhrosenberg@gmail.com
+# 
+# The author of this program is Steven Rosenberg (stevenhrosenberg@gmail.com).
+# It is made available under the MIT License.
 
 require "nokogiri"
 require "open-uri"

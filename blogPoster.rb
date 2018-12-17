@@ -289,7 +289,6 @@ menu = ["",
             yourFtpUpload.passive = @your_ftp_mode_passive
             yourFtpUpload.login(user = @your_ftp_login_name, password = @your_ftp_password)
             if @socialDirectory == true
-             #    yourFtpUpload.chdir('/public_html/stevenrosenberg.net/documents/updates')
                 yourFtpUpload.chdir(@your_ftp_social_directory)
             else
                 yourFtpUpload.chdir(@your_ftp_other_directory)
@@ -339,7 +338,7 @@ menu = ["",
             # Edit the text
             # Turn the variable into file
             temp_text_for_editing = File.new("temp_text", "w+")
-            # Write contents of $yourText into the temp_text file
+            # Write contents of @yourText into the temp_text file
             File.open("temp_text", "a+") { |file| file.write(@yourText) }
             temp_text_for_editing.close
             # Open the file in your text editor
@@ -347,9 +346,9 @@ menu = ["",
             system(@your_text_editor, 'temp_text')
             # Put contents of edited temp_text file
             # into temp_text_for_editing variable
-            # and then putting that variable's contents into global
-            # $yourText -- probably could skip a step and write
-            # directly to $yourText
+            # and then putting that variable's contents into
+            # @yourText -- probably could skip a step and write
+            # directly to @yourText
             temp_text_for_editing = File.open("temp_text", "r")
             @yourText = temp_text_for_editing.read.chomp
             temp_text_for_editing.close

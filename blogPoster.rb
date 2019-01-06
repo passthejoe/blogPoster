@@ -50,15 +50,26 @@ check_for_config
 
 
 # Create the archive directory if it doesn't already exist
-Dir.mkdir('archive') if !Dir.exists?('archive')
+
+def check_for_archive
+  Dir.mkdir('archive') if !Dir.exists?('archive')
+end
+
+check_for_archive
+  
 
 # Load in keys/tokens for Twitter API
-@client = Twitter::REST::Client.new do |config|
-  config.consumer_key        = @twitter_consumer_key
-  config.consumer_secret     = @twitter_consumer_secret
-  config.access_token        = @twitter_access_token
-  config.access_token_secret = @twitter_access_token_secret
+
+def load_twitter_keys
+    @client = Twitter::REST::Client.new do |config|
+    config.consumer_key        = @twitter_consumer_key
+    config.consumer_secret     = @twitter_consumer_secret
+    config.access_token        = @twitter_access_token
+    config.access_token_secret = @twitter_access_token_secret
+    end
 end
+
+load_twitter_keys
 
 # Display the menu, ask for user input and then execute based on
 # that input

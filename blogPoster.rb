@@ -87,6 +87,7 @@ menu = ["",
         "t - title same as text",
         "d - URL with post?",
         "e - display file",
+        "n - change url",
         "f - save file",
         "g - post file",
         "h - edit title",
@@ -374,7 +375,15 @@ menu = ["",
             puts "Your new text: #{@yourText}"
             
             runmenu
-            
+
+        elsif yourTask == 'n'
+            # Change the URL for the current post
+            @urlBool = true
+            # Ask user for a URL
+            puts "Enter a new URL\n\n"
+            @yourURL = gets.chomp
+
+
         elsif yourTask == 'x'
             # Archive all the .txt posts
             # (Thanks to https://www.ruby-forum.com/topic/4041707#1055891 for the tip)

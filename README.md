@@ -24,7 +24,7 @@ In case you're wondering where the idea of a *microblog* comes from, aside from 
 
 * **Dave Winer**, who's [Scripting News](http://scripting.com) is one of the best personal microblogs out there. [Dave](https://en.wikipedia.org/wiki/Dave_Winer) is an inspiration to me both as a writer and a programmer.
 
-* **Manton Reece**, the creator of [Micro.blog](https://micro.blog). I really like [his writing](https://micro.blog/manton), and even though I had a hard time wrapping my head around what Micro.blog was actually going to become while Manton was planning it, the idea was intriguing. When it turned out that Micro.blog was a hosted and subscriber-based service, that gave me the push I needed to figure out how to do this on my own.
+* **Manton Reece**, the creator of [Micro.blog](https://micro.blog). I really like [his writing](https://micro.blog/manton), and even though I had a hard time wrapping my head around what Micro.blog was actually going to become while Manton was planning it, the idea was intriguing. When it turned out that Micro.blog was a hosted and subscriber-based service, and that apps for it would only be created for Apple devices, that gave me the push I needed to figure out how to do this on my own.
 
 ### Uploading to a blog or site via FTP
 

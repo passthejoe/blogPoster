@@ -383,6 +383,7 @@ menu = ["",
             puts "Enter a new URL\n\n"
             @yourURL = gets.chomp
 
+            runmenu
 
         elsif yourTask == 'x'
             # Archive all the .txt posts

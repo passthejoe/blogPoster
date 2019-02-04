@@ -22,9 +22,35 @@ But right now I use Ode, and that's what the script works with.
 
 In case you're wondering where the idea of a *microblog* comes from, aside from the fact that your Twitter feed is sort of, kind of, already a microblog, I found inspiration for this project in two microblogging pioneers:
 
-* **Dave Winer**, who's [Scripting News](http://scripting.com) is one of the best personal microblogs out there. [Dave](https://en.wikipedia.org/wiki/Dave_Winer) is an inspiration to me both as a writer and a programmer.
+* **Dave Winer**, whose [Scripting News](http://scripting.com) is one of the best personal microblogs out there: [Dave](https://en.wikipedia.org/wiki/Dave_Winer) is an inspiration to me both as a writer and a programmer.
 
-* **Manton Reece**, the creator of [Micro.blog](https://micro.blog). I really like [his writing](https://micro.blog/manton), and even though I had a hard time wrapping my head around what Micro.blog was actually going to become while Manton was planning it, the idea was intriguing. When it turned out that Micro.blog was a hosted and subscriber-based service, and that apps for it would only be created for Apple devices, that gave me the push I needed to figure out how to do this on my own.
+* **Manton Reece**, the creator of [Micro.blog](https://micro.blog): I really like [his writing](https://micro.blog/manton), and even though I had a hard time wrapping my head around what Micro.blog was actually going to become while Manton was planning it, the idea was intriguing. When it turned out that Micro.blog was a hosted and subscriber-based service and that apps for it would only be created for Apple devices, what Manton created gave me the push I needed to figure out how to do this on my own.
+
+### What do you need to have in place to run blogPoster?
+
+At this point, blogPoster isn't a complete, stand-alone system. It's a Ruby script and a few extra files.
+
+To run the script, you need the Ruby programming language and a few Gems.
+
+I have tested the script *extensively* on Linux and Windows systems, and works pretty much the same on both. I imagine that results would be the same on Mac OS.
+
+The biggest variable is your choice of text editor, which the script uses to edit posts. I used the writing and testing of this script as an "excuse" to learn [Vim](https://www.vim.org), and I am glad I did. But the script works very well with other editors. It is *very* compatible with `Notepad` in Windows, though not as compatible with Notepad++ as I'd like it to be. I haven't tried a lot of other editors with Linux, but that is something I will do in the future, and I will report the results in this file.
+
+You really don't have to use a text editor with the script. You can do everything in the console (i.e. at the command line), though bringing in a text editor makes it much easier to craft your posts.
+
+Aside from a text editor, you need to have the following Ruby Gems installed:
+
+* Nokogiri
+* Twitter
+
+The Nokogiri gem is available as a package in most Linux distributions, which works great if you are using your distribution's Ruby implementation.
+
+Some Linux distributions have packaged a Twitter gem, but not Fedora, which I use, so I usually have to resort to the `gem` program to add it.
+
+### Do you need a stand-alone blogging system to use blogPoster?
+
+No, you can use blogPoster just for posting to Twitter (or just for posting to your blog/microblog). It's flexible that way.
+
 
 ### Uploading to a blog or site via FTP
 
@@ -40,7 +66,7 @@ That same configuration file also lets you select your file suffix. I use `.txt`
 
 Before you use the app to post to Twitter, you need to get access to the Twitter API via a [a Twitter Development Account](https://developer.twitter.com/en/docs/basics/developer-portal/overview), which is harder to get than it used to be.
 
-When you fill out the online form, basically you need to tell them that you are using a Ruby script to post tweets from your desktop, and then they should say "OK," and give you the keys/tokens you need to enter in `blogPoster_configuration.rb` to make the app work with Twitter.
+When you fill out Twitter's online form to "register" your instance of blogPoster, you basically need to tell them you are using a Ruby script to post tweets from your desktop, and then they should say "OK," and give you the keys/tokens you need to enter in `blogPoster_configuration.rb` to make the app work with Twitter.
 
 The first time I requested access to the Twitter API, it all went smoothly. All I had to do was tell them what my app was going to do. I had to do this a second time due to changes Twitter made in their API agreement. This time they came back with further questions, and I just restated what I said before. That worked.
 

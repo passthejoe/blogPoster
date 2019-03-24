@@ -37,8 +37,9 @@ require "twitter"
 def check_for_config
     if !File.file?('blogPoster_configuration.rb')
     FileUtils.cp 'blogPoster_configuration_example.rb', 'blogPoster_configuration.rb'
-    puts "Either this is your first time running blogPoster, or the configuration file is missing. Before you proceed, open blogPoster_configuration.rb in a text editor and fill in your information.\n
-    Select \'q\' to quit.\n"
+    puts "\n\nEither this is your first time running blogPoster, or the configuration file is missing.\n"
+    puts "\nBefore you proceed, quit this program, open blogPoster_configuration.rb in a text editor and fill in your information.\n"
+    puts "\nSelect \'q\' to quit.\n"
     
     else
     require_relative "blogPoster_configuration.rb"

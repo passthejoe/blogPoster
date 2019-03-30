@@ -32,9 +32,11 @@ At this point, blogPoster isn't a complete, stand-alone system. It's a Ruby scri
 
 To run the script, you need the Ruby programming language and a few Gems.
 
+**Which version of Ruby?** As of March 30, 2019, blogPoster will not run with Ruby 2.6 because the `Twitter` gem will not install on it. I have tested blogPoster with Ruby 2.5, and the two needed gems -- `nokogiri` and `twitter` -- do install, and the script runs fine. While `nokogiri` only has one dependency, the `Twitter` gem has many, one of which is keeping it from installing in Ruby 2.6 at this time.
+
 I have tested the script *extensively* on Linux and Windows systems, and works pretty much the same on both. I imagine that results would be the same on Mac OS.
 
-The biggest variable is your choice of text editor, which the script uses to edit posts. I used the writing and testing of this script as an "excuse" to learn [Vim](https://www.vim.org), and I am glad I did. But the script works very well with other editors. It is *very* compatible with `Notepad` in Windows, though not as compatible with Notepad++ as I'd like it to be. I haven't tried a lot of other editors with Linux, but that is something I will do in the future, and I will report the results in this file.
+The biggest variable is your choice of text editor, which the script uses to edit posts. I used the writing and testing of this script as an "excuse" to learn [Vim](https://www.vim.org), and I am glad I did. But the script works very well with other editors. It is *very* compatible with `Notepad` in Windows, though not as compatible with Notepad++ as I'd like it to be. I haven't tried a lot of other editors with Linux, but that is something I will do in the future, and I will report the results in this file. I use `vim` in both Windows and Linux, which makes things simple for me. But I understand if you want to use something else.
 
 You really don't have to use a text editor with the script. You can do everything in the console (i.e. at the command line), though bringing in a text editor makes it much easier to craft your posts.
 
@@ -71,4 +73,8 @@ When you fill out Twitter's online form to "register" your instance of blogPoste
 The first time I requested access to the Twitter API, it all went smoothly. All I had to do was tell them what my app was going to do. I had to do this a second time due to changes Twitter made in their API agreement. This time they came back with further questions, and I just restated what I said before. That worked.
 
 **Aside:** I would like to turn this into a graphical app that allows users to log in using their Twitter credentials and not require them to get API access, but that's a project for the future.
+
+### Note to developers
+
+If you are running blogPoster and also trying to hack on it using `git`, you might need to make one change in your `.gitignore` file: My blog files end with the suffix `.txt`, and if yours end with another suffix, say `.md` or `.html`, you will need to replace `*.txt` with an appropriate entry so `git` won't commit your entries.
 

@@ -33,6 +33,10 @@ require "date"
 require "net/ftp"
 require "fileutils"
 require "twitter"
+require "logger"
+
+log = Logger.new('log.file', 'daily')
+
 
 def check_for_config
     if !File.file?('blogPoster_configuration.rb')

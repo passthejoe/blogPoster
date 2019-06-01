@@ -5,3 +5,4 @@ temp_text
 blogPoster_configuration.rb
 blogPoster_configuration_backup.rb
 class*
+log.file

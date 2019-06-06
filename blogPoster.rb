@@ -53,7 +53,7 @@ check_for_config
 # Create the archive directory if it doesn't already exist
 
 def check_for_archive
-  Dir.mkdir('archive') if !Dir.exists?('archive')
+  Dir.mkdir('archive') if !Dir.exist?('archive')
 end
 
 check_for_archive

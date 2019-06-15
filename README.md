@@ -32,7 +32,11 @@ At this point, blogPoster isn't a complete, stand-alone system. It's a Ruby scri
 
 To run the script, you need the Ruby programming language and a few Gems.
 
-**Which version of Ruby?** As of March 30, 2019, blogPoster will not run with Ruby 2.6 because the `Twitter` gem will not install on it. I have tested blogPoster with Ruby 2.5, and the two needed gems -- `nokogiri` and `twitter` -- do install, and the script runs fine. While `nokogiri` only has one dependency, the `Twitter` gem has many, one of which is keeping it from installing in Ruby 2.6 at this time.
+**Which version of Ruby?** As of March 30, 2019, blogPoster will not run with Ruby 2.6 in Windows because the `Twitter` gem will not install on it. I have tested blogPoster with Ruby 2.5 in Windows, and the two needed gems -- `nokogiri` and `twitter` -- do install, and the script runs fine. While `nokogiri` only has one dependency, the `Twitter` gem has many, one of which is keeping it from installing in Ruby 2.6 at this time.
+
+I recently upgraded to Fedora 30, which upgrade Ruby to 2.6, and I was able to install the `nokogiri` and `twitter` gems, and the script worked there.
+
+I can also report that blogPoster works with JRuby. I tried version 9.2.7.0 in Windows, using `jruby -S gem install` to bring in the `nokogiri` and `Twitter` gems, and the script worked as expected. However, the Ruby `system` command that I use to bring in a text editor doesn't work with as many editors as it does in MRuby (aka "normal" Ruby). With JRuby in Windows, console Vim did not work, but I did have success with GVim (aka GUI Vim) and Notepad (Windows Notepad, not Notepad++). While one of ny goals in writing this script and using it was to learn Vim by editing dozens of short text files per day as I edited tweets/posts, you might not have that same goal. And in Windows, Notepad (using `notepad` in the configuration) seems to be a VERY reliable editor to use with this script.
 
 I have tested the script *extensively* on Linux and Windows systems, and works pretty much the same on both. I imagine that results would be the same on Mac OS.
 

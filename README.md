@@ -60,8 +60,15 @@ BlogPoster works with [JRuby](https://www.jruby.org). I tried version 9.2.7.0 in
 
 **No.** You can use blogPoster just for posting to Twitter, or just for posting to your blog/microblog. It's flexible that way.
 
+While the blog-posting portion of blogPoster in its default configuration is so [Ode](http://ode.io)-specific, you can and should modify it for your file-based blogging system.
+
 
 ### Uploading to a blog or site via FTP
+
+What you need:
+
+* A blog that uses "flat" text files
+* Acccess via FTP (usually with a login and password, though I'm pretty sure a public/private key login will also work; I definitely need to test that)
 
 I'm using FTP to do the uploads, and users of this script should know that it's not the most secure protocol for file transfer. The script uses Ruby's [net/ftp](https://rubyreferences.github.io/rubyref/stdlib/networking-web/net/ftp.html) class to enable the transfer. Since the shared hosting I use now doesn't allow for an unencrypted transfer, I'm not sure how secure this method actually is. I'd like to try something that explicitely uses `sftp`. For now, consider this a "use at your own risk" feature.
 

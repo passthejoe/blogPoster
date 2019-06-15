@@ -30,37 +30,40 @@ In case you're wondering where the idea of a *microblog* comes from, aside from 
 
 At this point, blogPoster isn't a complete, stand-alone system. It's a Ruby script and a few extra files.
 
-To run the script, you need the Ruby programming language and a few Gems.
+To run the script, you need the Ruby programming language, a compatible text editor and a few Gems.
+
+Aside from a text editor, you need to have the following Ruby Gems installed:
+
+* `Nokogiri`
+* `Twitter`
+
+The Nokogiri gem is available as a package in most Linux distributions, which works great if you are using your distribution's Ruby implementation.
+
+Some Linux distributions have packaged a Twitter gem, but not Fedora, the distribution I use, so I usually have to resort to the `gem` program to add it.
+
+**Note on Ruby Gems:** In response to a tweet about using Linux distribution packages to install Ruby Gems, a couple of developers replied to say that they don't recommend using distribution-packaged Gems, or even distribution-packaged Ruby. But they definitely urged use of Gems via Ruby's `gem install` program. I don't know where I come down on this, though in Windows it's not an issue because of ... well, Windows.
 
 **Which version of Ruby?** As of March 30, 2019, blogPoster will not run with Ruby 2.6 in Windows because the `Twitter` gem will not install on it. I have tested blogPoster with Ruby 2.5 in Windows, and the two needed gems -- `nokogiri` and `twitter` -- do install, and the script runs fine. While `nokogiri` only has one dependency, the `Twitter` gem has many, one of which is keeping it from installing in Ruby 2.6 at this time.
 
 I recently upgraded to Fedora 30, which upgrade Ruby to 2.6, and I was able to install the `nokogiri` and `twitter` gems, and the script worked there.
 
-I can also report that blogPoster works with JRuby. I tried version 9.2.7.0 in Windows, using `jruby -S gem install` to bring in the `nokogiri` and `Twitter` gems, and the script worked as expected. However, the Ruby `system` command that I use to bring in a text editor doesn't work with as many editors as it does in MRuby (aka "normal" Ruby). With JRuby in Windows, console Vim did not work, but I did have success with GVim (aka GUI Vim) and Notepad (Windows Notepad, not Notepad++). While one of ny goals in writing this script and using it was to learn Vim by editing dozens of short text files per day as I edited tweets/posts, you might not have that same goal. And in Windows, Notepad (using `notepad` in the configuration) seems to be a VERY reliable editor to use with this script.
+I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I imagine that results would be the same on macOS.
 
-I have tested the script *extensively* on Linux and Windows systems, and works pretty much the same on both. I imagine that results would be the same on Mac OS.
+The biggest variable is your choice of text editor, which the script uses to edit posts. I used the coding and testing of this script as an "excuse" to learn [Vim](https://www.vim.org), and I am glad I did. But the script works very well with other editors. It is *very* compatible with `Notepad` in Windows, though not as compatible with `Notepad++` as I'd like it to be. I haven't tried a lot of other editors with Linux, but that is something I will do in the future, and I will report the results in this file. I use `vim` in both Windows and Linux, which makes things simple for me. But I understand if you want to use something else.
 
-The biggest variable is your choice of text editor, which the script uses to edit posts. I used the writing and testing of this script as an "excuse" to learn [Vim](https://www.vim.org), and I am glad I did. But the script works very well with other editors. It is *very* compatible with `Notepad` in Windows, though not as compatible with Notepad++ as I'd like it to be. I haven't tried a lot of other editors with Linux, but that is something I will do in the future, and I will report the results in this file. I use `vim` in both Windows and Linux, which makes things simple for me. But I understand if you want to use something else.
+BlogPoster works with [JRuby](https://www.jruby.org). I tried version 9.2.7.0 in Windows, using `jruby -S gem install` to bring in the `nokogiri` and `Twitter` gems, and the script worked as expected. However, the Ruby `system` command that I use to bring in a text editor doesn't work with as many editors in JRuby as it does in MRuby (aka "normal" Ruby). With JRuby in Windows, console Vim did not work, but I did have success with `GVim` (aka GUI Vim) and `Notepad` (Windows Notepad, not Notepad++). While one of ny goals in writing this script and using it was to learn Vim by editing dozens of short text files per day as I edited tweets/posts, you might not have that same goal. And in Windows, Notepad (using `notepad` in the configuration) seems to be a VERY reliable editor to use with this script.
 
-You really don't have to use a text editor with the script. You can do everything in the console (i.e. at the command line), though bringing in a text editor makes it much easier to craft your posts.
+**You really don't have to use a text editor with the script if you don't want to.** You can do everything in the console (i.e. at the command line), though bringing in a text editor makes it much easier to craft your posts.
 
-Aside from a text editor, you need to have the following Ruby Gems installed:
-
-* Nokogiri
-* Twitter
-
-The Nokogiri gem is available as a package in most Linux distributions, which works great if you are using your distribution's Ruby implementation.
-
-Some Linux distributions have packaged a Twitter gem, but not Fedora, which I use, so I usually have to resort to the `gem` program to add it.
 
 ### Do you need a stand-alone blogging system to use blogPoster?
 
-No, you can use blogPoster just for posting to Twitter (or just for posting to your blog/microblog). It's flexible that way.
+**No.** You can use blogPoster just for posting to Twitter, or just for posting to your blog/microblog. It's flexible that way.
 
 
 ### Uploading to a blog or site via FTP
 
-I'm using FTP to do the uploads, and users of this script should know that it's not the most secure protocol for file transfer. That is something I'd like to work on.
+I'm using FTP to do the uploads, and users of this script should know that it's not the most secure protocol for file transfer. The script uses Ruby's [net/ftp](https://rubyreferences.github.io/rubyref/stdlib/networking-web/net/ftp.html) class to enable the transfer. Since the shared hosting I use now doesn't allow for an unencrypted transfer, I'm not sure how secure this method actually is. I'd like to try something that explicitely uses `sftp`. For now, consider this a "use at your own risk" feature.
 
 To use this app for posting to your blog, you'll need to enter your FTP login and password in the configuration file `blogPoster_configuration.rb`, which is created when you run the `blogPoster.rb` script for the first time.
 
@@ -81,4 +84,3 @@ The first time I requested access to the Twitter API, it all went smoothly. All 
 ### Note to developers
 
 If you are running blogPoster and also trying to hack on it using `git`, you might need to make one change in your `.gitignore` file: My blog files end with the suffix `.txt`, and if yours end with another suffix, say `.md` or `.html`, you will need to replace `*.txt` with an appropriate entry so `git` won't commit your entries.
-

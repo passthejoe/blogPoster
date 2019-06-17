@@ -1,7 +1,24 @@
 
 # Configuration for blogPoster
 
+# Pick a text editor to edit title and text of your posts:
+# The default is vim for console vim. You can change the value
+# of this variable to the executable for any editor
+# you wish to use. It might work, it might not.
+# 
+# For Windows, notepad is a good choice, though I prefer
+# vim even in that environment. Gvim also works.
+# Check the README for tips on which editors work
+# in the various environments you can use
+# to run this program.
+
 @your_text_editor = "vim"
+
+# Maximum length of file names for blog uploads:
+# This is both to keep Ruby from crashing
+# and to keep file names at a reasonable length.
+
+@max_file_name_length = 100
 
 # Twitter API
 

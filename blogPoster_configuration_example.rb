@@ -26,6 +26,7 @@
 @twitter_consumer_secret     = "this_is_an_even_longer_string_of_characters_for_the_Twitter_API"
 @twitter_access_token        = "this_is_yet_another_long_string_of_characters_for_the_Twitter_API"
 @twitter_access_token_secret = "just_another_long_string_of_characters_for_the_Twitter_API"
+@twitter_max_length          = 280
 
 # FTP account and server information
 

@@ -36,22 +36,21 @@ Aside from a text editor, you need to have the following Ruby Gems installed:
 
 * `Nokogiri`
 * `Twitter`
+* `net-sftp`
 
-The Nokogiri gem is available as a package in most Linux distributions, which works great if you are using your distribution's Ruby implementation.
+The `Nokogiri` and `net-sftp` gems are available as a package in most Linux distributions, which works great if you are using your distribution's Ruby implementation.
 
-Some Linux distributions have packaged a Twitter gem, but not Fedora, the distribution I use, so I usually have to resort to the `gem` program to add it.
+Some Linux distributions have packaged a Twitter gem, but not Fedora, where Ruby's `gem` command can be used to add it.
 
-**Note on Ruby Gems:** In response to a tweet about using Linux distribution packages to install Ruby Gems, a couple of developers replied to say that they don't recommend using distribution-packaged Gems, or even distribution-packaged Ruby. But they definitely urged use of Gems via Ruby's `gem install` program. I don't know where I come down on this, though in Windows it's not an issue because of ... well, Windows.
+**Note on Ruby Gems:** In response to a tweet about using Linux distribution packages to install Ruby Gems, a couple of developers replied to say that they don't recommend using distribution-packaged Gems, or even distribution-packaged Ruby. But they definitely urged use of Gems via Ruby's `gem install` program. I don't know where I come down on this, though Windows and MacOS don't generally allow users to install software via repository in the same way that Linux and BSD systems usually do. For Windows and Mac, you can add these gems with `gem install nokogiri`, etc. If you don't want to rely on Linux packages for your Ruby gems, you can use `gem install` for everything.
 
-**Which version of Ruby?** As of March 30, 2019, blogPoster will not run with Ruby 2.6 in Windows because the `Twitter` gem will not install on it. I have tested blogPoster with Ruby 2.5 in Windows, and the two needed gems -- `nokogiri` and `twitter` -- do install, and the script runs fine. While `nokogiri` only has one dependency, the `Twitter` gem has many, one of which is keeping it from installing in Ruby 2.6 at this time.
+**Which version of Ruby?** As of March 1, 2020, blogPoster — with the proper Ruby Gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows.
 
-I recently upgraded to Fedora 30, which upgrade Ruby to 2.6, and I was able to install the `nokogiri` and `twitter` gems, and the script worked there.
-
-I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I imagine that results would be the same on macOS.
+I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I imagine the results would be the same on macOS, but it wouldn't hurt me to do some tests (and I will).
 
 The biggest variable is your choice of text editor, which the script uses to edit posts. I used the coding and testing of this script as an "excuse" to learn [Vim](https://www.vim.org), and I am glad I did. But the script works very well with other editors. It is *very* compatible with `Notepad` in Windows, though not as compatible with `Notepad++` as I'd like it to be. I haven't tried a lot of other editors with Linux, but that is something I will do in the future, and I will report the results in this file. I use `vim` in both Windows and Linux, which makes things simple for me. But I understand if you want to use something else.
 
-BlogPoster works with [JRuby](https://www.jruby.org). I tried version 9.2.7.0 in Windows, using `jruby -S gem install` to bring in the `nokogiri` and `Twitter` gems, and the script worked as expected. However, the Ruby `system` command that I use to bring in a text editor doesn't work with as many editors in JRuby as it does in MRuby (aka "normal" Ruby). With JRuby in Windows, console Vim did not work, but I did have success with `GVim` (aka GUI Vim) and `Notepad` (Windows Notepad, not Notepad++). While one of ny goals in writing this script and using it was to learn Vim by editing dozens of short text files per day as I edited tweets/posts, you might not have that same goal. And in Windows, Notepad (using `notepad` in the configuration) seems to be a VERY reliable editor to use with this script.
+BlogPoster works with [JRuby](https://www.jruby.org). I tried version 9.2.7.0 in Windows, using `jruby -S gem install` to bring in the `nokogiri` and `Twitter` gems, and the script worked as expected. However, the Ruby `system` command that I use to bring in a text editor doesn't work with as many editors in JRuby as it does in MRuby (aka "normal" Ruby). With JRuby in Windows, console Vim did not work, but I did have success with `GVim` (aka GUI Vim) and `Notepad` (Windows Notepad, not Notepad++). While one of my goals in writing this script and using it was to learn Vim by editing dozens of short text files per day as I edited tweets/posts, you might not have that same goal. And in Windows, as I say above, Notepad (using `notepad` in the configuration) seems to be a VERY reliable editor to use with this script.
 
 **You really don't have to use a text editor with the script if you don't want to.** You can do everything in the console (i.e. at the command line), though bringing in a text editor makes it much easier to craft your posts.
 
@@ -67,10 +66,10 @@ While the blog-posting portion of blogPoster in its default configuration is so 
 
 What you need:
 
-* A blog that uses "flat" text files
-* Acccess via FTP (usually with a login and password, though I'm pretty sure a public/private key login will also work; I definitely need to test that)
+* A blog/website that uses "flat" text files
+* Acccess to that blog/website via SFTP (usually with a login and password, though I'm pretty sure a public/private key login will also work; I definitely need to test that and add a key option to the SFTP credentials)
 
-I'm using FTP to do the uploads, and users of this script should know that it's not the most secure protocol for file transfer. The script uses Ruby's [net/ftp](https://rubyreferences.github.io/rubyref/stdlib/networking-web/net/ftp.html) class to enable the transfer. Since the shared hosting I use now doesn't allow for an unencrypted transfer, I'm not sure how secure this method actually is. I'd like to try something that explicitely uses `sftp`. For now, consider this a "use at your own risk" feature.
+As of March 1, 2020, the script uses SFTP — via the `net-sftp` Ruby gem — to transfer files to static sites. I formerly used FTP, and aside from being more secure, the SFTP gem requires about one-third the code of the `net-ftp` library.
 
 To use this app for posting to your blog, you'll need to enter your FTP login and password in the configuration file `blogPoster_configuration.rb`, which is created when you run the `blogPoster.rb` script for the first time.
 

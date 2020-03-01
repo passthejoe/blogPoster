@@ -30,7 +30,8 @@
 require "nokogiri"
 require "open-uri"
 require "date"
-require "net/ftp"
+# require "net/ftp"
+require "net/sftp"
 require "fileutils"
 require "twitter"
 
@@ -305,24 +306,20 @@ menu = ["",
         elsif yourTask == "g"
             # send file on its way
             puts "I am sending your file where it's supposed to go"
+           
+            # New sftp code uses the Net::SFTP Gem
             
-            yourFtpUpload = Net::FTP.new(@your_ftp_domain)
-            yourFtpUpload.passive = @your_ftp_mode_passive
-            yourFtpUpload.login(user = @your_ftp_login_name, password = @your_ftp_password)
-            if @socialDirectory == true
-                yourFtpUpload.chdir(@your_ftp_social_directory)
-            else
-                yourFtpUpload.chdir(@your_ftp_other_directory)
-            end
+            def sftp_upload
             
-            yourFtpUpload.puttextfile(@yourFileName)
-            yourFtpUpload.close
-            if @socialDirectory == true
-                puts "Uploading to the social directory"
-            else
-                puts "Uploading to non-social directory"
-            end
-        
+				Net::SFTP.start(@your_ftp_domain, @your_ftp_login_name, :password => @your_ftp_password) do |sftp|
+				sftp.upload!(@yourFileName, @your_ftp_social_directory + "/" + @yourFileName)
+				
+				end
+
+			end
+			
+			sftp_upload
+            
             puts "Your file should now be on the server"
             
             # If @ping_needed = true, ping the blog so the entry publishes
@@ -335,6 +332,7 @@ menu = ["",
                 ping_it = open(yourWebSiteToPing).read
                 puts "Pinged ... should be ready"
             end
+           
             runmenu
             
         elsif yourTask == 'h'

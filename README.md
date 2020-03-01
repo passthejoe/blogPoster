@@ -26,6 +26,10 @@ In case you're wondering where the idea of a *microblog* comes from, aside from 
 
 * **Manton Reece**, the creator of [Micro.blog](https://micro.blog): I really like [his writing](https://micro.blog/manton), and even though I had a hard time wrapping my head around what Micro.blog was actually going to become while Manton was planning it, the idea was intriguing. When it turned out that Micro.blog was a hosted and subscriber-based service and that apps for it would only be created for Apple devices, what Manton created gave me the push I needed to figure out how to do this on my own.
 
+### This project is for learning
+
+I came up with this project to solve a problem, but another key purpose is to give me a reason to learn more programming and development skills. This is how I figure out Ruby, git and GitHub. What started as a purely imperative-style script is slowly using Ruby modules and eventually classes.
+
 ### What do you need to have in place to run blogPoster?
 
 At this point, blogPoster isn't a complete, stand-alone system. It's a Ruby script and a few extra files.

@@ -12,6 +12,24 @@
 # in the various environments you can use
 # to run this program.
 
+# I tend to use Vim/Vi, and I've found that while "vim"
+# works on some Linux and even Windows systems (with Vim
+# installed), my new iMac running Debian 10 wanted "vi"
+# instead. Otherwise, it didn't work. Experiment until you
+# find what does work.
+
+# Examples:
+
+# @your_text_editor = "vim"
+# @your_text_editor = "vi"
+# @your_text_editor = "vim"
+# @your_text_editor = "gvim"
+# @your_text_editor = "nano"
+# @your_text_editor = "joe"
+# @your_text_editor = "notepad"
+# @your_text_editor = "notepad++"
+
+
 @your_text_editor = "vim"
 
 # Maximum length of file names for blog uploads:

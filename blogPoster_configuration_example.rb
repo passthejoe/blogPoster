@@ -1,4 +1,3 @@
-
 # Configuration for blogPoster
 
 # Pick a text editor to edit title and text of your posts:
@@ -49,12 +48,32 @@
 # FTP account and server information
 
 @your_ftp_domain            = "ftp.YOUR_DOMAIN_HERE.com"
-@your_ftp_mode_passive      = true
 @your_ftp_login_name        = "your_FTP_server_login_name"
 @your_ftp_password          = "your_FTP_server_password"
 
 @your_ftp_social_directory  = "/here/is/the/path/to/the/directory/where/your/social/posts/live"
 @your_ftp_other_directory   = "/here/is/the/path/to/another/directory/on/your/server/totally/optional"
 
+# Set @ping_needed = true if you need to ping a certain URL to "build" your site
+# (or its index) after an entry is uploaded. Otherwise set it to false.
+# If @ping_needed = true, set @your_website_to_ping = "http://the_actual_url_you_need_to_make_it_happen.
+#
+# For an Ode site using the Indexette add-in, you would have:
+#
+# @ping_needed				= true
+# @your_website_to_ping = 	"http://yoururl.com?reindex=y"
+#
+
 @ping_needed                = true
-@your_website_to_ping = "http://myblog.com/requires/calling/a/special/url/to/rebuild/the/index"
+@your_website_to_ping 		= "http://myblog.com/requires/calling/a/special/url/to/rebuild/the/index"
+
+# Host to ping -- checking for a live Internet connection
+#
+# You don't have to change this parameter unless you want to.
+# The script pings a known server to check for a live Internet connection, and
+# a great "candidate" for this is a big-time DNS server like Cloudflare's 1.1.1.1
+#
+# Use a well-known server, or one well-known to you. Other candidates include:
+# Google's DNS: 8.8.8.8 or 8.8.4.4
+# The IP of your own server
+@host_to_ping				= "1.1.1.1" 

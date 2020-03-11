@@ -25,15 +25,15 @@
 #
 # 
 # The author of this program is Steven Rosenberg (stevenhrosenberg@gmail.com).
-# It is made available under the MIT License.
+# It is made available under [the MIT License](https://github.com/passthejoe/blogPoster/blob/master/README.md).
 
 require "nokogiri"
 require "open-uri"
 require "date"
-# require "net/ftp"
 require "net/sftp"
 require "fileutils"
 require "twitter"
+require "net/ping"
 
 def check_for_config
     if !File.file?('blogPoster_configuration.rb')

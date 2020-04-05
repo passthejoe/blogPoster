@@ -63,8 +63,8 @@
 # @ping_needed				= true
 # @your_website_to_ping = 	"http://yoururl.com?reindex=y"
 #
-
 @ping_needed                = true
+
 @your_website_to_ping 		= "http://myblog.com/requires/calling/a/special/url/to/rebuild/the/index"
 
 # Host to ping -- checking for a live Internet connection

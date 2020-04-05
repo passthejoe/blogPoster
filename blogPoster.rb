@@ -76,6 +76,20 @@ load_twitter_keys
 # Display the menu, ask for user input and then execute based on
 # that input
 
+
+# Check for a live internet connection with net/ping
+# This method prevents the script from crashing if there is
+# no internet connection when uploading the post to a blog
+# or other web site.
+
+def are_we_connected?(host)
+	check = Net::Ping::External.new(host)
+	check.ping?
+end
+
+check_connection = are_we_connected?(@host_to_ping)
+puts "The computer is connected to the internet (true/false): #{check_connection}"
+
 def runmenu
 
 # The menu is an array with the first and last entries left "blank"
@@ -305,7 +319,12 @@ menu = ["",
     
         elsif yourTask == "g"
             # send file on its way
-            puts "I am sending your file where it's supposed to go"
+			
+			check_connection = are_we_connected?(@host_to_ping)
+			puts "Is this computer connected to the internet?"
+			puts connection_status
+
+			puts "I am sending your file where it's supposed to go"
            
             # New sftp code uses the Net::SFTP Gem
             
@@ -314,10 +333,8 @@ menu = ["",
 				Net::SFTP.start(@your_ftp_domain, @your_ftp_login_name, :password => @your_ftp_password) do |sftp|
 				sftp.upload!(@yourFileName, @your_ftp_social_directory + "/" + @yourFileName)
 				
-				end
-
 			end
-			
+
 			sftp_upload
             
             puts "Your file should now be on the server"
@@ -332,6 +349,9 @@ menu = ["",
                 ping_it = open(yourWebSiteToPing).read
                 puts "Pinged ... should be ready"
             end
+
+end
+
            
             runmenu
             

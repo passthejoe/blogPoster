@@ -61,10 +61,11 @@
 # For an Ode site using the Indexette add-in, you would have:
 #
 # @ping_needed				= true
-# @your_website_to_ping = 	"http://yoururl.com?reindex=y"
+# @your_website_to_ping = 	"http://your_url.com?reindex=y"
 #
 @ping_needed                = true
 
+# Change this to the URL that pings your particular web site
 @your_website_to_ping 		= "http://myblog.com/requires/calling/a/special/url/to/rebuild/the/index"
 
 # Host to ping -- checking for a live Internet connection

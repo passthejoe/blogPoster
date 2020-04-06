@@ -322,16 +322,16 @@ menu = ["",
         elsif yourTask == "g"
             # send file on its way
 			
-		#	def check_before_sending
+			def check_before_sending
 
 				check_connection = are_we_connected?(@host_to_ping)
-				puts "Is this computer connected to the internet?"
+				puts "Is this computer connected to the internet? (true/false):"
 				puts check_connection
 
 				puts "I am sending your file where it's supposed to go"
-		#	end
+			end
 
-		#	check_before_sending
+			check_before_sending
            
             # New sftp code uses the Net::SFTP Gem
             

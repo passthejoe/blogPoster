@@ -82,6 +82,7 @@ load_twitter_keys
 # no internet connection when uploading the post to a blog
 # or other web site.
 
+=begin
 def are_we_connected?(host)
 	check = Net::Ping::External.new(host)
 	check.ping?
@@ -89,6 +90,7 @@ end
 
 check_connection = are_we_connected?(@host_to_ping)
 puts "The computer is connected to the internet (true/false): #{check_connection}"
+=end
 
 def runmenu
 
@@ -320,11 +322,16 @@ menu = ["",
         elsif yourTask == "g"
             # send file on its way
 			
-			check_connection = are_we_connected?(@host_to_ping)
-			puts "Is this computer connected to the internet?"
-			puts connection_status
+			def check_before_sending
 
-			puts "I am sending your file where it's supposed to go"
+				check_connection = are_we_connected?(@host_to_ping)
+				puts "Is this computer connected to the internet?"
+				puts check_connection
+
+				puts "I am sending your file where it's supposed to go"
+			end
+
+			check_before_sending
            
             # New sftp code uses the Net::SFTP Gem
             

@@ -27,6 +27,19 @@
 # The author of this program is Steven Rosenberg (stevenhrosenberg@gmail.com).
 # It is made available under [the MIT License](https://github.com/passthejoe/blogPoster/blob/master/README.md).
 
+# Note the required gems for this program.
+#
+# The ones you'll have to install are:
+#
+# nokogiri
+# net-sftp
+# twitter
+# net-ping
+#
+# and if you are running Windows:
+# win32-security
+#
+
 require "nokogiri"
 require "open-uri"
 require "date"

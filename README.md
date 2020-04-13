@@ -41,13 +41,19 @@ Aside from a text editor, you need to have the following Ruby gems installed:
 * `Nokogiri`
 * `Twitter`
 * `net-sftp`
-* (I will soon be adding `net-ping`)
+* `net-ping`
+
+And if you are running this program on Windows:
+
+* `win32-security` (Without this gem, `net-ping` won't run on Windows systems)
 
 The `Nokogiri` and `net-sftp` gems are available as a package in most Linux distributions, which works great if you are using your distribution's Ruby implementation.
 
 Some Linux distributions have packaged the Twitter gem, but not Fedora, where Ruby's `gem` command can be used to add it.
 
-I haven't written the code yet, but I will be using the `net-ping` gem to test Internet connectivity. That gem is not available even in Debian and Ubuntu, so it's another one that you'll need to add with `gem install`.
+I have started but not finished writing the code to use `net-ping` gem to test Internet connectivity, with the goal of preventing the program from crashing in cases where there is no live connection. That gem is not available even in Debian and Ubuntu, so it's another one that you'll need to add with `gem install`.
+
+And as I say above, on Windows computers, you'll have to add the `win32-security` gem. using `gem install` to add `net-ping` doesn't "require" `win32-security`, but without it the script will crash.
 
 **Note on Ruby Gems:** In response to a tweet about using Linux distribution packages to install Ruby gems, a couple of developers replied to say that they don't recommend using distribution-packaged gems, or even distribution-packaged Ruby. (Many favor the use of [RVM](https://rvm.io/), which is something I'm open to trying but haven't yet. But they definitely are in favor of getting gems via Ruby's `gem install` program.
 

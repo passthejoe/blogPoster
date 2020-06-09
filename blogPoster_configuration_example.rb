@@ -1,6 +1,6 @@
 # Configuration for blogPoster
 
-# Pick a text editor to edit title and text of your posts:
+# Pick a text editor to edit the title and text of your posts:
 # The default is vim for console vim. You can change the value
 # of this variable to the executable for any editor
 # you wish to use. It might work, it might not.

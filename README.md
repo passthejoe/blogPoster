@@ -1,8 +1,10 @@
 ## blogPoster
 
-### blogPoster news (June 9, 2020)
+#### blogPoster news (June 9, 2020)
 
-This program already posts to an Ode-style blog and Twitter. I am about to add the ability to post to Mastodon-running social networks. The feature (and the documentation will be extremely *alpha* for awhile.
+This program already posts to an Ode-style blog and Twitter. I am about to add the ability to post to Mastodon-running social networks. The feature (and the documentation) will be extremely *alpha* for awhile.
+
+Future development goals include creating and posting Hugo-style entries and rewriting the code in a modular/object-oriented style.
 
 ### What is blogPoster?
 

@@ -45,6 +45,11 @@
 @twitter_access_token_secret = "just_another_long_string_of_characters_for_the_Twitter_API"
 @twitter_max_length          = 280
 
+# Mastodon API
+
+@mastodon_base_url			= "http://your.website.com"
+@mastdodon_bearer_token		= "a_long_string_of_characters" 
+
 # FTP account and server information
 
 @your_ftp_domain            = "ftp.YOUR_DOMAIN_HERE.com"

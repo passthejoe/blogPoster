@@ -46,7 +46,9 @@ require "date"
 require "net/sftp"
 require "fileutils"
 require "twitter"
+require "mastodon"
 require "net/ping"
+
 
 def check_for_config
     if !File.file?('blogPoster_configuration.rb')
@@ -126,6 +128,7 @@ menu = ["",
         "u - send to Twitter",
         "r - raw post (no link)",
         "l - list unarchived posts",
+        "m - send to Mastodon",
         "x - archive posts",
         "q - quit",
         ""

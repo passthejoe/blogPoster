@@ -480,6 +480,49 @@ menu = ["",
             # Return to the menu
             runmenu
         
+        elsif yourTask == 'm'
+            # Send to Mastodon
+            puts "Sending this post to your Mastodon instance"
+            puts "First checking the length ...\nToots cannot exceed #{@twitter_max_length} characters,\nincluding the URL ...\n"
+            checking_length = @yourText + @yourURL if @urlBool
+            checking_length = @yourText if !@urlBool
+            puts "Your post length is #{checking_length.length} characters"
+            length_ok = true if checking_length.length <= @twitter_max_length
+        
+            begin
+                if @urlBool && length_ok
+                    puts "Your post is not too long ..."
+                    @yourText = @yourText.chomp
+                    
+                    mastodon_client = Mastodon::REST::Client.new(base_url: '#{@mastodon_base_url}', bearer_token: '#{@mastdodon_bearer_token}')
+
+					mastodon_client.create_status("#{@yourText} #{@yourURL}", {:sensitive => false})
+                    
+                    puts "Post sent to Mastodon"
+                elsif length_ok
+                    puts "Your post is not too long ..."
+                    @yourText = @yourText.chomp
+                    
+                    mastodon_client = Mastodon::REST::Client.new(base_url: '#{@mastodon_base_url}', bearer_token: '#{@mastdodon_bearer_token}')
+
+					mastodon_client.create_status("#{@yourText}", {:sensitive => false})
+                    
+                    puts "Post sent to Mastodon"
+                else
+                    puts "Please shorten your text length to
+                    #{@twitter_max_length} characters, including any
+                    URL that is included.
+                    Click 'i' to edit your text"
+                end
+            rescue
+                puts "\nSomething happened with Mastodon"
+                puts "Your toot did not go through"
+            else
+                puts "Success!"
+            end
+           
+            # Return to the menu
+            runmenu
             
         elsif yourTask == 'q'
             puts "Goodbye ..."

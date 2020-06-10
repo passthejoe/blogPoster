@@ -1,5 +1,13 @@
 ## blogPoster
 
+#### News on June 9, 2020
+
+I am hacking on this script in the `network_ping` branch in this Git repository. As of June 9, 2020, I added the ability to post to Mastodon. I am still working on the "network ping" feature, which aims to keep the script from crashing when the computer loses its internet connection.
+
+tl;dr Switch to the `network_ping` for Mastodon. Or wait for me to merge them together.
+
+### What is 
+
 blogPoster aims to make it easy to create social-media-style posts and send those posts to both a social-media service and a personal blog.
 
 This is a *very* personal project that I use just about every day. Right now it's a terminal program that uses Ruby and a few gems to take URLs and make quick and easy social-media entries based on them.

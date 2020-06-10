@@ -356,12 +356,13 @@ menu = ["",
 				Net::SFTP.start(@your_ftp_domain, @your_ftp_login_name, :password => @your_ftp_password) do |sftp|
 				sftp.upload!(@yourFileName, @your_ftp_social_directory + "/" + @yourFileName)
 				end
-				
+								
 			end
 
 			sftp_upload
-            
+			
             puts "Your file should now be on the server"
+			
             
             # If @ping_needed = true, ping the blog so the entry publishes
 
@@ -514,6 +515,7 @@ menu = ["",
             length_ok = true if checking_length.length <= @twitter_max_length
         
             begin
+                                
                 if @urlBool && length_ok
                     puts "Your post is not too long ..."
                     @yourText = @yourText.chomp
@@ -543,12 +545,14 @@ menu = ["",
                     URL that is included.
                     Click 'i' to edit your text"
                 end
-            rescue
-                puts "\nSomething happened with Mastodon"
-                puts "Your toot did not go through"
-            else
-                puts "Success!"
-            end
+				rescue
+					puts "\nSomething happened with Mastodon"
+					puts "Your toot did not go through"
+				else
+					puts "Success!"
+				end
+	
+            
            
             # Return to the menu
             runmenu
@@ -560,7 +564,7 @@ menu = ["",
         else
             puts "Your choice isn't in the list above, so enter it again"
             runmenu
-    end
+		end
 end
 
 # Run the method the first time the program is executed

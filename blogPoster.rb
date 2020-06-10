@@ -340,9 +340,9 @@ menu = ["",
 			
 			def check_before_sending
 
-				check_connection = are_we_connected?(@host_to_ping)
+				@check_connection = are_we_connected?(@host_to_ping)
 				puts "Is this computer connected to the internet? (true/false):"
-				puts check_connection
+				puts @check_connection
 
 				puts "I am sending your file where it's supposed to go"
 			end
@@ -359,6 +359,8 @@ menu = ["",
 								
 			end
 
+			if @check_connection
+			
 			sftp_upload
 			
             puts "Your file should now be on the server"
@@ -373,6 +375,12 @@ menu = ["",
                 puts "Pinging now ..."
                 ping_it = open(yourWebSiteToPing).read
                 puts "Pinged ... should be ready"
+            end
+            
+            else
+            
+            puts "You are not connected to the internet"
+            
             end
 
 

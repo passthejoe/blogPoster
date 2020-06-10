@@ -479,6 +479,30 @@ menu = ["",
            
             # Return to the menu
             runmenu
+            
+        # Mastodon notes: The mastodon/mastodon-api gem and the twitter gem are causing
+        # some kind of conflict in Windows. Maybe try a newer Ruby to see if it
+        # can be resolved.
+        #
+        # To install the mastodon-api gem in Debian first you need the ruby-dev package
+        # so you can build local gems:
+        #
+        # $ sudo apt install ruby-dev
+        # $ sudo apt gem install mastodon-api
+        #
+        # In the configuration file, @mastodon_base_url is the URL of your Mastodon instance
+        # @mastodon_bearer_token is the token you need to access your Mastodon account
+        # on your instance.
+        #
+        # You can get this token at:
+        # Access Token Generator for Mastodon API
+        # https://takahashim.github.io/mastodon-access-token/
+        # Mastodon URL is your instance's URL
+        # Client Name is your app name (e.g. blogPoster)
+        # Web site is where you want the client name to link on your live post
+        # for Scopes, pick Read Writer
+        # The access_token this web site generates is your @mastodon_bearer_token
+        #    
         
         elsif yourTask == 'm'
             # Send to Mastodon
@@ -494,18 +518,23 @@ menu = ["",
                     puts "Your post is not too long ..."
                     @yourText = @yourText.chomp
                     
-                    mastodon_client = Mastodon::REST::Client.new(base_url: '#{@mastodon_base_url}', bearer_token: '#{@mastdodon_bearer_token}')
+                   # mastodon_client = Mastodon::REST::Client.new(base_url: '#{@mastodon_base_url}', bearer_token: '#{@mastdodon_bearer_token}')
 
-					mastodon_client.create_status("#{@yourText} #{@yourURL}", {:sensitive => false})
-                    
-                    puts "Post sent to Mastodon"
+					# mastodon_client.create_status("#{@yourText} #{@yourURL}", {:sensitive => false})
+					
+					mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastdodon_bearer_token)
+
+					mastodon_client.create_status(@yourText + " " + @yourURL, {:sensitive => false})
+					
+					puts "Post sent to Mastodon"
+					
                 elsif length_ok
                     puts "Your post is not too long ..."
                     @yourText = @yourText.chomp
                     
-                    mastodon_client = Mastodon::REST::Client.new(base_url: '#{@mastodon_base_url}', bearer_token: '#{@mastdodon_bearer_token}')
-
-					mastodon_client.create_status("#{@yourText}", {:sensitive => false})
+					mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastdodon_bearer_token)
+                   
+					mastodon_client.create_status(@yourText, {:sensitive => false})
                     
                     puts "Post sent to Mastodon"
                 else

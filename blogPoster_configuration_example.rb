@@ -47,7 +47,7 @@
 
 # Mastodon API
 
-@mastodon_base_url			= "http://your.website.com"
+@mastodon_base_url			= "http://your.mastodon.instance"
 @mastdodon_bearer_token		= "a_long_string_of_characters" 
 
 # FTP account and server information

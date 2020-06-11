@@ -4,7 +4,9 @@
 
 * The `network_ping` feature has landed. Now the script will check for a live internet connection before attempting to upload a file to the blog.
 
-* Mastodon posting is now working. Documentation is inline in the script, but it should move to this README soon. I haven't tested whether this works with [Pleroma], but I will.
+* **Mastodon posting** is now working. Documentation is inline in the script, but it should move to this README soon. I haven't tested whether this works with [Pleroma], but I will.
+
+* Next on the roadmap: Posting to a **Hugo** blog.
 
 ### What is blogPoster?
 
@@ -44,7 +46,7 @@ At this point, blogPoster isn't a complete, stand-alone system. It's a Ruby scri
 
 To run the script, you need the Ruby programming language, a compatible text editor and a few Ruby gems.
 
-Aside from a text editor, you need to install the following Ruby gems:
+Install the following Ruby gems:
 
 * `Nokogiri`
 * `Twitter`
@@ -52,7 +54,7 @@ Aside from a text editor, you need to install the following Ruby gems:
 * `net-ping`
 * `mastodon-api`
 
-And if you are running this program on Windows:
+And if you are running this program on Windows, install this one, too:
 
 * `win32-security` (Without this gem, `net-ping` won't run on Windows systems)
 
@@ -60,11 +62,9 @@ The `Nokogiri` and `net-sftp` gems are available as a package in most Linux dist
 
 Some Linux distributions have packaged the `Twitter` gem, but not Fedora, where Ruby's `gem` command can be used to add it.
 
-I have started but not finished writing the code to use `net-ping` gem to test Internet connectivity, with the goal of preventing the program from crashing in cases where there is no live connection. That gem is not available even in Debian and Ubuntu, so it's another one that you'll need to add with `gem install`.
-
 And as I say above, on Windows computers, you'll have to add the `win32-security` gem. Using `gem install` to add `net-ping` doesn't "require" `win32-security`, but without it the script will crash.
 
-**Windows 10 note:** There is a problem with this script on Windows computers running the Ruby 2.6 you get from <http://rubyinstaller.org>. The `twitter` and `mastodon` gems conflict, and it crashes the script. Ironic, right? I need to do more testing to determine if there is a way to work around this issue, or if its unique to my particular Windows setup. For now, if you have this issue, either comment out the `require 'twitter'` or `require 'mastodon'` lines in the top of the script.
+**Windows 10 note:** As of June 10, 2020, there is a problem with this script on Windows computers running the Ruby 2.6 you get from <http://rubyinstaller.org>. The `twitter` and `mastodon` gems conflict, and it crashes the script. Ironic, right? I need to do more testing to determine if there is a way to work around this issue, or if its unique to my particular Windows setup. For now, if you have this issue, either comment out the `require 'twitter'` or `require 'mastodon'` lines in the top of the script.
 
 **Note on Ruby Gems:** In response to a tweet about using Linux distribution packages to install Ruby gems, a couple of developers replied to say that they don't recommend using distribution-packaged gems, or even distribution-packaged Ruby. (Many favor the use of [RVM](https://rvm.io/), which is something I'm open to trying but haven't yet. But they definitely are in favor of getting gems via Ruby's `gem install` program.
 
@@ -72,11 +72,12 @@ Windows and MacOS don't generally allow users to install software via repository
 
 If you don't want to rely on Linux packages for your Ruby gems, you can use `gem install` for everything.
 
-**Which version of Ruby?** As of March 1, 2020, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows.
+**Which version of Ruby?** As of March 1, 2020, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows. (But note current problems with the `twitter` and `mastodon` gems conflicting.)
 
 I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I imagine the results would be the same on macOS, but it wouldn't hurt me to do some tests (and I will).
 
 **Why does blogPoster use an external text editor, and which one should I choose?**
+
 The biggest variable is your choice of text editor, which the script uses to edit posts. I used the coding and testing of this script as an "excuse" to learn [Vim](https://www.vim.org), and I am glad I did. But the script works very well with other editors. It is *very* compatible with `Notepad` in Windows, though not as compatible with `Notepad++` as I'd like it to be.
 
 I haven't tried a lot of other editors with Linux, but that is something I will do in the future, and I will report the results in this file. I use `vim` in both Windows and Linux, which makes things simple for me. But I understand if you want to use something else.
@@ -89,15 +90,14 @@ As I say below, setting Vim as your preferred blogPoster text editor is a great 
 
 **You really don't have to use a text editor with the script if you don't want to.** You can do everything in the console (i.e. at the command line), though bringing in a text editor makes it much easier to craft your posts.
 
-
 ### Do you need a stand-alone blogging system to use blogPoster?
 
-**No.** You can use blogPoster just for posting to Twitter, or just for posting to your blog/microblog. It's flexible that way.
+**No.** You can use blogPoster just for posting to Twitter or Mastodon, or just for posting to your blog/microblog. It's flexible that way.
 
 While the blog-posting portion of blogPoster in its default configuration is very much [Ode](http://ode.io)-specific, you can and should modify it for your file-based blogging system. As I say above, this is on my roadmap for the project.
 
 
-### Uploading to a blog or site via FTP
+### Uploading to a blog or site via secure FTP
 
 What you need:
 
@@ -121,6 +121,10 @@ When you fill out Twitter's online form to "register" your instance of blogPoste
 The first time I requested access to the Twitter API, it all went smoothly. All I had to do was tell them what my app was going to do. I had to do this a second time due to changes Twitter made in their API agreement. This time they came back with further questions, and I just restated what I said before. It was the coding equivalent of _"These are not the 'droids you're looking for."_ And it worked.
 
 **Aside:** I would like to turn this into a graphical app that allows users to log in using their Twitter credentials and not require them to get API access, but that's a project for the future.
+
+### Posting to a Mastodon instance
+
+Documentation for posting to Mastodon will go here at some time in the near future.
 
 ### Note to developers
 

@@ -35,6 +35,7 @@
 # net-sftp
 # twitter
 # net-ping
+# mastodon
 #
 # and if you are running Windows:
 # win32-security
@@ -97,15 +98,17 @@ load_twitter_keys
 # no internet connection when uploading the post to a blog
 # or other web site.
 
-
 def are_we_connected?(host)
 	check = Net::Ping::External.new(host)
 	check.ping?
 end
 
-check_connection = are_we_connected?(@host_to_ping)
-puts "The computer is connected to the internet (true/false): #{check_connection}"
+# Checking here for a connection -- might as well do that.
+connected = are_we_connected?(@host_to_ping)
+puts "\nThe computer is connected to the internet (true/false): #{connected}"
 
+puts "\nWelcome to blogPoster, the command-line program \nthat posts to \
+your microblog, Twitter and Mastodon."
 
 def runmenu
 
@@ -338,18 +341,12 @@ menu = ["",
         elsif yourTask == "g"
             # send file on its way
 			
-			def check_before_sending
-
-				@check_connection = are_we_connected?(@host_to_ping)
-				puts "Is this computer connected to the internet? (true/false):"
-				puts @check_connection
-
-				puts "I am sending your file where it's supposed to go"
-			end
-
-			check_before_sending
-           
-            # New sftp code uses the Net::SFTP Gem
+			# First run the are_we_connected? method to check
+			# for a live internet connection
+			
+			connected = are_we_connected?(@host_to_ping)
+			
+            # New sftp_upload method uses the Net::SFTP Gem
             
             def sftp_upload
             
@@ -358,34 +355,34 @@ menu = ["",
 				end
 								
 			end
-
-			if @check_connection
 			
-			sftp_upload
+			# Now do the upload. An 'if/else' block only runs the upload
+			# if there is a live internet connection
 			
-            puts "Your file should now be on the server"
+			if connected
+			
+				sftp_upload
+			
+				puts "Your file should now be on the server"
 			
             
-            # If @ping_needed = true, ping the blog so the entry publishes
+				# If @ping_needed = true, ping the blog so the entry publishes
 
-            if @ping_needed
-                yourWebSiteToPing = @your_website_to_ping
+				if @ping_needed
+					yourWebSiteToPing = @your_website_to_ping
             
-                puts "Plus I will ping the blog so this new entry publishes"
-                puts "Pinging now ..."
-                ping_it = open(yourWebSiteToPing).read
-                puts "Pinged ... should be ready"
-            end
+					puts "Plus I will ping the blog so this new entry publishes"
+					puts "Pinging now ..."
+					ping_it = open(yourWebSiteToPing).read
+					puts "Pinged ... should be ready"
+				end
             
             else
             
-            puts "You are not connected to the internet"
+				puts "You are not connected to the internet"
             
             end
 
-
-
-           
             runmenu
             
         elsif yourTask == 'h'

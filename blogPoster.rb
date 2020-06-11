@@ -27,13 +27,29 @@
 # The author of this program is Steven Rosenberg (stevenhrosenberg@gmail.com).
 # It is made available under [the MIT License](https://github.com/passthejoe/blogPoster/blob/master/README.md).
 
+# Note the required gems for this program.
+#
+# The ones you'll have to install are:
+#
+# nokogiri
+# net-sftp
+# twitter
+# net-ping
+# mastodon
+#
+# and if you are running Windows:
+# win32-security
+#
+
 require "nokogiri"
 require "open-uri"
 require "date"
 require "net/sftp"
 require "fileutils"
 require "twitter"
+require "mastodon"
 require "net/ping"
+
 
 def check_for_config
     if !File.file?('blogPoster_configuration.rb')
@@ -76,6 +92,24 @@ load_twitter_keys
 # Display the menu, ask for user input and then execute based on
 # that input
 
+
+# Check for a live internet connection with net/ping
+# This method prevents the script from crashing if there is
+# no internet connection when uploading the post to a blog
+# or other web site.
+
+def are_we_connected?(host)
+	check = Net::Ping::External.new(host)
+	check.ping?
+end
+
+# Checking here for a connection -- might as well do that.
+connected = are_we_connected?(@host_to_ping)
+puts "\nThe computer is connected to the internet (true/false): #{connected}"
+
+puts "\nWelcome to blogPoster, the command-line program \nthat posts to \
+your microblog, Twitter and Mastodon."
+
 def runmenu
 
 # The menu is an array with the first and last entries left "blank"
@@ -97,6 +131,7 @@ menu = ["",
         "u - send to Twitter",
         "r - raw post (no link)",
         "l - list unarchived posts",
+        "m - send to Mastodon",
         "x - archive posts",
         "q - quit",
         ""
@@ -305,34 +340,49 @@ menu = ["",
     
         elsif yourTask == "g"
             # send file on its way
-            puts "I am sending your file where it's supposed to go"
-           
-            # New sftp code uses the Net::SFTP Gem
+			
+			# First run the are_we_connected? method to check
+			# for a live internet connection
+			
+			connected = are_we_connected?(@host_to_ping)
+			
+            # New sftp_upload method uses the Net::SFTP Gem
             
             def sftp_upload
             
 				Net::SFTP.start(@your_ftp_domain, @your_ftp_login_name, :password => @your_ftp_password) do |sftp|
 				sftp.upload!(@yourFileName, @your_ftp_social_directory + "/" + @yourFileName)
-				
 				end
-
+								
 			end
 			
-			sftp_upload
+			# Now do the upload. An 'if/else' block only runs the upload
+			# if there is a live internet connection
+			
+			if connected
+			
+				sftp_upload
+			
+				puts "Your file should now be on the server"
+			
             
-            puts "Your file should now be on the server"
-            
-            # If @ping_needed = true, ping the blog so the entry publishes
+				# If @ping_needed = true, ping the blog so the entry publishes
 
-            if @ping_needed
-                yourWebSiteToPing = @your_website_to_ping
+				if @ping_needed
+					yourWebSiteToPing = @your_website_to_ping
             
-                puts "Plus I will ping the blog so this new entry publishes"
-                puts "Pinging now ..."
-                ping_it = open(yourWebSiteToPing).read
-                puts "Pinged ... should be ready"
+					puts "Plus I will ping the blog so this new entry publishes"
+					puts "Pinging now ..."
+					ping_it = open(yourWebSiteToPing).read
+					puts "Pinged ... should be ready"
+				end
+            
+            else
+            
+				puts "You are not connected to the internet"
+            
             end
-           
+
             runmenu
             
         elsif yourTask == 'h'
@@ -435,7 +485,82 @@ menu = ["",
            
             # Return to the menu
             runmenu
+            
+        # Mastodon notes: The mastodon/mastodon-api gem and the twitter gem are causing
+        # some kind of conflict in Windows. Maybe try a newer Ruby to see if it
+        # can be resolved.
+        #
+        # To install the mastodon-api gem in Debian first you need the ruby-dev package
+        # so you can build local gems:
+        #
+        # $ sudo apt install ruby-dev
+        # $ sudo apt gem install mastodon-api
+        #
+        # In the configuration file, @mastodon_base_url is the URL of your Mastodon instance
+        # @mastodon_bearer_token is the token you need to access your Mastodon account
+        # on your instance.
+        #
+        # You can get this token at:
+        # Access Token Generator for Mastodon API
+        # https://takahashim.github.io/mastodon-access-token/
+        # Mastodon URL is your instance's URL
+        # Client Name is your app name (e.g. blogPoster)
+        # Web site is where you want the client name to link on your live post
+        # for Scopes, pick Read Writer
+        # The access_token this web site generates is your @mastodon_bearer_token
+        #    
         
+        elsif yourTask == 'm'
+            # Send to Mastodon
+            puts "Sending this post to your Mastodon instance"
+            puts "First checking the length ...\nToots cannot exceed #{@twitter_max_length} characters,\nincluding the URL ...\n"
+            checking_length = @yourText + @yourURL if @urlBool
+            checking_length = @yourText if !@urlBool
+            puts "Your post length is #{checking_length.length} characters"
+            length_ok = true if checking_length.length <= @twitter_max_length
+        
+            begin
+                                
+                if @urlBool && length_ok
+                    puts "Your post is not too long ..."
+                    @yourText = @yourText.chomp
+                    
+                   # mastodon_client = Mastodon::REST::Client.new(base_url: '#{@mastodon_base_url}', bearer_token: '#{@mastdodon_bearer_token}')
+
+					# mastodon_client.create_status("#{@yourText} #{@yourURL}", {:sensitive => false})
+					
+					mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastdodon_bearer_token)
+
+					mastodon_client.create_status(@yourText + " " + @yourURL, {:sensitive => false})
+					
+					puts "Post sent to Mastodon"
+					
+                elsif length_ok
+                    puts "Your post is not too long ..."
+                    @yourText = @yourText.chomp
+                    
+					mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastdodon_bearer_token)
+                   
+					mastodon_client.create_status(@yourText, {:sensitive => false})
+                    
+                    puts "Post sent to Mastodon"
+                else
+                    puts "Please shorten your text length to
+                    #{@twitter_max_length} characters, including any
+                    URL that is included.
+                    Click 'i' to edit your text"
+                end
+				rescue
+					puts "\nSomething happened with Mastodon"
+					puts "Your toot did not go through"
+				else
+					puts "Success!"
+				end
+	
+            
+           
+            # Return to the menu
+            runmenu
             
         elsif yourTask == 'q'
             puts "Goodbye ..."
@@ -444,7 +569,7 @@ menu = ["",
         else
             puts "Your choice isn't in the list above, so enter it again"
             runmenu
-    end
+		end
 end
 
 # Run the method the first time the program is executed

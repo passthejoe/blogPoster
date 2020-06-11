@@ -1,6 +1,6 @@
 # Configuration for blogPoster
 
-# Pick a text editor to edit title and text of your posts:
+# Pick a text editor to edit the title and text of your posts:
 # The default is vim for console vim. You can change the value
 # of this variable to the executable for any editor
 # you wish to use. It might work, it might not.
@@ -45,6 +45,11 @@
 @twitter_access_token_secret = "just_another_long_string_of_characters_for_the_Twitter_API"
 @twitter_max_length          = 280
 
+# Mastodon API
+
+@mastodon_base_url			= "http://your.mastodon.instance"
+@mastdodon_bearer_token		= "a_long_string_of_characters" 
+
 # FTP account and server information
 
 @your_ftp_domain            = "ftp.YOUR_DOMAIN_HERE.com"
@@ -61,10 +66,11 @@
 # For an Ode site using the Indexette add-in, you would have:
 #
 # @ping_needed				= true
-# @your_website_to_ping = 	"http://yoururl.com?reindex=y"
+# @your_website_to_ping = 	"http://your_url.com?reindex=y"
 #
-
 @ping_needed                = true
+
+# Change this to the URL that pings your particular web site
 @your_website_to_ping 		= "http://myblog.com/requires/calling/a/special/url/to/rebuild/the/index"
 
 # Host to ping -- checking for a live Internet connection

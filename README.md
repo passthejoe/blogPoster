@@ -1,22 +1,12 @@
 ## blogPoster
 
-<<<<<<< HEAD
-#### News on June 9, 2020
+#### News on June 10, 2020
 
-I am hacking on this script in the `network_ping` branch in this Git repository. As of June 9, 2020, I added the ability to post to Mastodon. I am still working on the "network ping" feature, which aims to keep the script from crashing when the computer loses its internet connection.
+* The `network_ping` feature has landed. Now the script will check for a live internet connection before attempting to upload a file to the blog.
 
-tl;dr Switch to the `network_ping` for Mastodon. Or wait for me to merge them together.
-
-### What is 
-=======
-#### blogPoster news (June 9, 2020)
-
-This program already posts to an Ode-style blog and Twitter. I am about to add the ability to post to Mastodon-running social networks. The feature (and the documentation) will be extremely *alpha* for awhile.
-
-Future development goals include creating and posting Hugo-style entries and rewriting the code in a modular/object-oriented style.
+* Mastodon posting is now working. Documentation is inline in the script, but it should move to this README soon. I haven't tested whether this works with [Pleroma], but I will.
 
 ### What is blogPoster?
->>>>>>> network_ping
 
 blogPoster aims to make it easy to create social-media-style posts and send those posts to both a social-media service and a personal blog.
 
@@ -24,9 +14,9 @@ This is a *very* personal project that I use just about every day. Right now it'
 
 blogPoster can also create posts "from scratch," meaning you can begin by inputting a title and text without a URL. You can add any URL you want to any post and even change the URL on the post you're already working on.
 
-The way the app is structured right now, it creates and formats posts for an [Ode](http://ode.io) blog and the [Twitter](http://twitter.com) social-media service. 
+The way the app is structured right now, it creates and formats posts for an [Ode](http://ode.io) blog and the [Twitter](http://twitter.com) and [Mastodon](https://joinmastodon.org/) social-media services. 
 
-You've probably heard of Twitter, and you might already use it. That's a good reason to be interested in this project. But I could code this app to post to any other service that has an API I can figure out. Right now I use Twitter and don't envision adding any other services, but I *could*. If a given service has an API and I can figure out how to use it, that's the first step.
+Mastodon posting is new. It works, but I need to add more documentation.
 
 I'm pretty sure you haven't heard of [Ode](http://ode.io), the Rob Reed-coded, Perl-based blogging software that is inspired by [Bloxsom](http://blosxom.sourceforge.net/) ([see a little more on Wikipedia](https://en.wikipedia.org/wiki/Blosxom)).
 
@@ -54,13 +44,13 @@ At this point, blogPoster isn't a complete, stand-alone system. It's a Ruby scri
 
 To run the script, you need the Ruby programming language, a compatible text editor and a few Ruby gems.
 
-Aside from a text editor, you need to have the following Ruby gems installed:
+Aside from a text editor, you need to install the following Ruby gems:
 
 * `Nokogiri`
 * `Twitter`
 * `net-sftp`
 * `net-ping`
-* `mastodon-api` (When this functionality goes live)
+* `mastodon-api`
 
 And if you are running this program on Windows:
 
@@ -73,6 +63,8 @@ Some Linux distributions have packaged the `Twitter` gem, but not Fedora, where 
 I have started but not finished writing the code to use `net-ping` gem to test Internet connectivity, with the goal of preventing the program from crashing in cases where there is no live connection. That gem is not available even in Debian and Ubuntu, so it's another one that you'll need to add with `gem install`.
 
 And as I say above, on Windows computers, you'll have to add the `win32-security` gem. Using `gem install` to add `net-ping` doesn't "require" `win32-security`, but without it the script will crash.
+
+**Windows 10 note:** There is a problem with this script on Windows computers running the Ruby 2.6 you get from <http://rubyinstaller.org>. The `twitter` and `mastodon` gems conflict, and it crashes the script. Ironic, right? I need to do more testing to determine if there is a way to work around this issue, or if its unique to my particular Windows setup. For now, if you have this issue, either comment out the `require 'twitter'` or `require 'mastodon'` lines in the top of the script.
 
 **Note on Ruby Gems:** In response to a tweet about using Linux distribution packages to install Ruby gems, a couple of developers replied to say that they don't recommend using distribution-packaged gems, or even distribution-packaged Ruby. (Many favor the use of [RVM](https://rvm.io/), which is something I'm open to trying but haven't yet. But they definitely are in favor of getting gems via Ruby's `gem install` program.
 

@@ -14,16 +14,26 @@
 # where you might want to do a straight file transfer to your
 # local Documents directory and then trigger a build of your site.
 #
-# The other purpose of this script is to send your entry to a
-# social-media service such as Twitter. That is what the script does
-# at this point. You need to open a developer account with Twitter
-# to get access to the service's API. The README for this program
-# has more information on how to do that.
-
+# Automatic posting to Hugo blogs is on the roadmap.
+#
+# The other purpose of this script is to send your entry to 
+# social-media services Twitter and Mastodon.
+#
+# For Twitter, you need to open a developer account. The README
+# goes over the procedure.
+#
+# For Mastodon, you need to get an access token for your
+# account on your instance. It's marginally easier to do this
+# than it is to get "permission" from Twitter, though both are
+# very much doable.
+#
+# The README doesn't have the Mastodon access token info yet,
+# but it will soon.
 # 
 # More information on Ode: http://ode.io
 #
-# 
+# Mastodon: https://joinmastodon.org/
+#
 # The author of this program is Steven Rosenberg (stevenhrosenberg@gmail.com).
 # It is made available under [the MIT License](https://github.com/passthejoe/blogPoster/blob/master/README.md).
 
@@ -35,7 +45,7 @@
 # net-sftp
 # twitter
 # net-ping
-# mastodon
+# mastodon-api
 #
 # and if you are running Windows:
 # win32-security

@@ -2,9 +2,7 @@
 
 #### News on June 15, 2020
 
-* I agree with [the movement that says](https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/) the technology terms "master/slave" should go away, and the primary Git (and GitHub and Codeberg) repository in this project is now called `main`.
-
-I'm still trying to get this right, and having two remote repos isn't helping. I have a Git config file set up so I can push to both repos with one command, and that is not working. I am pushing to the repos with individual commands, and that is working for now.
+* I agree with [the movement that says](https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/) the technology terms "master/slave" should go away, and the primary Git (and GitHub and Codeberg) repository in this project is now called `main` instead of `master`.
 
 #### News on June 10, 2020
 

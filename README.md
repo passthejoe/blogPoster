@@ -1,5 +1,9 @@
 ## blogPoster
 
+#### News on June 15, 2020
+
+* I agree with [the movement that says](https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/) the technology terms "master/slave" should go away, and the primary Git (and GitHub and Codeberg) repository in this project is now called `main`.
+
 #### News on June 10, 2020
 
 * The `network_ping` feature has landed. Now the script will check for a live internet connection before attempting to upload a file to the blog.

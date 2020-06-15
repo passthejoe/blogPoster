@@ -463,11 +463,11 @@ menu = ["",
         elsif yourTask == 'u'
             # Send to Twitter
             puts "Sending this post to Twitter"
-            puts "First checking the length ...\nTweets cannot exceed #{@twitter_max_length} characters,\nincluding the URL ...\n"
+            puts "First checking the length ...\nTweets cannot exceed #{@mastodon_max_length} characters,\nincluding the URL ...\n"
             checking_length = @yourText + @yourURL if @urlBool
             checking_length = @yourText if !@urlBool
             puts "Your post length is #{checking_length.length} characters"
-            length_ok = true if checking_length.length <= @twitter_max_length
+            length_ok = true if checking_length.length <= @mastodon_max_length
         
             begin
                 if @urlBool && length_ok

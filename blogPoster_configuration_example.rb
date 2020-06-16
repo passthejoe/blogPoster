@@ -49,6 +49,10 @@
 
 @mastodon_base_url			= "http://your.mastodon.instance"
 @mastdodon_bearer_token		= "a_long_string_of_characters"
+# Default post length for Mastodon is 500 characters
+# but can be different depending on an instance's setup.
+# All links in Mastodon count as 23 characters, no matter
+# how long they are.
 @mastodon_max_length		= 500 
 
 # FTP account and server information

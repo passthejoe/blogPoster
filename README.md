@@ -2,13 +2,13 @@
 
 #### News on June 15, 2020
 
-* I agree with [the movement that says](https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/) the technology terms "master/slave" should go away, and the primary Git (and GitHub and Codeberg) repository in this project is now called `main` instead of `master`.
+* I agree with [the movement that says](https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/) the technology terms "master/slave" should go away, and the primary Git repository in this project is now called `main` instead of `master`.
 
 #### News on June 10, 2020
 
 * The `network_ping` feature has landed. Now the script will check for a live internet connection before attempting to upload a file to the blog.
 
-* **Mastodon posting** is now working. Documentation is inline in the script, but it should move to this README soon. I haven't tested whether this works with [Pleroma], but I will.
+* **Mastodon posting** is now working. Documentation is inline in the script, but it should move to this README soon. I haven't tested whether this works with [Pleroma](https://pleroma.social/), but I will.
 
 * Next on the roadmap: Posting to a **Hugo** blog.
 

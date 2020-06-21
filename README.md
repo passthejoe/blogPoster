@@ -4,6 +4,8 @@
 
 * The move from `master` to `main` didn't go as smoothly as I would have liked. The problems grew from my git setup that pushed to two separate remote repositories. I am re-configuring to push to a single repo. This project is staying on GitHub. My [Zen of Debian](https://codeberg.org/passthejoe/zen-of-debian) project is still on both sites but will probably land on Codeberg.
 
+I made the mistake of using Stack Overflow posts and random blog entries that had me changing my `.git/config` file. I seemed to have it working OK for awhile, but the `master-to-main` switch wasn't kind to that jury-rigged setup.
+
 #### News on June 15, 2020
 
 * I agree with [the movement that says](https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/) the technology terms "master/slave" should go away, and the primary Git repository in this project is now called `main` instead of `master`.

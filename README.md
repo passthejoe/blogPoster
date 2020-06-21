@@ -8,7 +8,7 @@ I made the mistake of using Stack Overflow posts and random blog entries that ha
 
 My biggest error is getting my `.git/config` commands mixed up between this repo and Zen of Debian. Hilarity (and the completely wrong files) ensued. I killed the Codeberg repo for blogPoster as a result.
 
-I think (or _hope_ at any rate) there is a better way to maintain two separate remotes, with one mirroring the other, that doesn't involve pushing to two at once.
+I think (or _hope_ at any rate) there is a better way to maintain two separate remotes with one mirroring the other that doesn't involve pushing to two at once.
 
 #### News on June 15, 2020
 

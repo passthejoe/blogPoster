@@ -4,7 +4,9 @@
 
 * The move from `master` to `main` didn't go as smoothly as I would have liked. The problems grew from my git setup that pushed to two separate remote repositories. I am re-configuring to push to a single repo. This project is staying on GitHub. My [Zen of Debian](https://codeberg.org/passthejoe/zen-of-debian) project is still on both sites but will probably land on Codeberg.
 
-I made the mistake of using Stack Overflow posts and random blog entries that had me changing my `.git/config` file. I seemed to have it working OK for awhile, but the `master-to-main` switch wasn't kind to that jury-rigged setup.
+I made the mistake of using Stack Overflow posts and random blog entries that had me changing my `.git/config` file in order to push to two remote repositories with a single `git push origin master`. I seemed to have it working OK for awhile, but the `master-to-main` switch wasn't kind to that jury-rigged setup.
+
+My biggest error is getting my `.git/config` commands mixed up between this repo and Zen of Debian. Hilarity (and the completely wrong files) ensued. I killed the Codeberg repo for blogPoster as a result.
 
 #### News on June 15, 2020
 

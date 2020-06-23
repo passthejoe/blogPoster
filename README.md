@@ -78,6 +78,12 @@ Some Linux distributions have packaged the `Twitter` gem, but not Fedora, where 
 
 And as I say above, on Windows computers, you'll have to add the `win32-security` gem. Using `gem install` to add `net-ping` doesn't "require" `win32-security`, but without it the script will crash.
 
+* On Debian/Ubuntu Linux systems, in order to successfully install the Mastodon gem with `sudo gem install mastodon-api`, you must first install the proper development tools:
+
+	$ sudo apt install ruby-dev gcc make
+then ...
+	$ sudo gem install mastodon-api
+
 **Windows 10 note:** As of June 10, 2020, there is a problem with this script on Windows computers running the Ruby 2.6 you get from <http://rubyinstaller.org>. The `twitter` and `mastodon` gems conflict, and it crashes the script. Ironic, right? I need to do more testing to determine if there is a way to work around this issue, or if its unique to my particular Windows setup. For now, if you have this issue, either comment out the `require 'twitter'` or `require 'mastodon'` lines in the top of the script.
 
 **Note on Ruby Gems:** In response to a tweet about using Linux distribution packages to install Ruby gems, a couple of developers replied to say that they don't recommend using distribution-packaged gems, or even distribution-packaged Ruby. (Many favor the use of [RVM](https://rvm.io/), which is something I'm open to trying but haven't yet. But they definitely are in favor of getting gems via Ruby's `gem install` program.

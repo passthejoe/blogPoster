@@ -27,6 +27,9 @@
 # than it is to get "permission" from Twitter, though both are
 # very much doable.
 #
+# You will need development tools to build the mastodon-api gem
+# in Linux. See the README for details.
+#
 # The README doesn't have the Mastodon access token info yet,
 # but it will soon.
 # 

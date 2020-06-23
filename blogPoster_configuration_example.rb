@@ -47,7 +47,7 @@
 
 # Mastodon API
 
-@mastodon_base_url			= "http://your.mastodon.instance"
+@mastodon_base_url		= "http://your.mastodon.instance"
 @mastdodon_bearer_token		= "a_long_string_of_characters"
 # Default post length for Mastodon is 500 characters
 # but can be different depending on an instance's setup.
@@ -57,12 +57,12 @@
 
 # FTP account and server information
 
-@your_ftp_domain            = "ftp.YOUR_DOMAIN_HERE.com"
-@your_ftp_login_name        = "your_FTP_server_login_name"
-@your_ftp_password          = "your_FTP_server_password"
+@your_ftp_domain           	= "ftp.YOUR_DOMAIN_HERE.com"
+@your_ftp_login_name        	= "your_FTP_server_login_name"
+@your_ftp_password          	= "your_FTP_server_password"
 
-@your_ftp_social_directory  = "/here/is/the/path/to/the/directory/where/your/social/posts/live"
-@your_ftp_other_directory   = "/here/is/the/path/to/another/directory/on/your/server/totally/optional"
+@your_ftp_social_directory  	= "/here/is/the/path/to/the/directory/where/your/social/posts/live"
+@your_ftp_other_directory   	= "/here/is/the/path/to/another/directory/on/your/server/totally/optional"
 
 # Set @ping_needed = true if you need to ping a certain URL to "build" your site
 # (or its index) after an entry is uploaded. Otherwise set it to false.
@@ -73,7 +73,7 @@
 # @ping_needed				= true
 # @your_website_to_ping = 	"http://your_url.com?reindex=y"
 #
-@ping_needed                = true
+@ping_needed                	= true
 
 # Change this to the URL that pings your particular web site
 @your_website_to_ping 		= "http://myblog.com/requires/calling/a/special/url/to/rebuild/the/index"
@@ -84,7 +84,10 @@
 # The script pings a known server to check for a live Internet connection, and
 # a great "candidate" for this is a big-time DNS server like Cloudflare's 1.1.1.1
 #
-# Use a well-known server, or one well-known to you. Other candidates include:
+# Use a well-known server, or one well-known to you.
+# Other candidates include:
 # Google's DNS: 8.8.8.8 or 8.8.4.4
+# Cloudflare's 1.1.1.1
 # The IP of your own server
-@host_to_ping				= "1.1.1.1" 
+#
+@host_to_ping			= "1.1.1.1" 

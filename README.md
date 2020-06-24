@@ -2,7 +2,13 @@
 
 #### News on June 24, 2020
 
-* I figured out the conflict between the `mastodon-api` and `twitter` Ruby gems regarding competing version of the `http` gem, which is a dependency of both. In order to let both gems "play" well together, use `twitter 6.2.0` instead of the current version, `twitter 7.0.0`. That's the workaround for now.
+I figured out the conflict between two Ruby gems, `mastodon-api` and `twitter` that made the script crash in some instances. Both gems have the `http` gem as a dependency, but the newer version that `twitter 7.0.0` requires is too "new" for `mastodon-api`. Until `mastodon-api` requires the same version of `http`, when installing the `twitter` gem, please specify `twitter 6.2.0`.
+
+That is generally done like this (add `sudo` where appropriate):
+
+	$ gem install twitter -v 6.2.0
+	
+More instructions on gem installation have been added to this README below.
 
 #### News on June 21, 2020
 

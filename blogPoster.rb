@@ -539,7 +539,7 @@ menu = ["",
 
 					# mastodon_client.create_status("#{@yourText} #{@yourURL}", {:sensitive => false})
 					
-					mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastdodon_bearer_token)
+					mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastodon_bearer_token)
 
 					mastodon_client.create_status(@yourText + " " + @yourURL, {:sensitive => false})
 					
@@ -549,7 +549,7 @@ menu = ["",
                     puts "Your post is not too long ..."
                     @yourText = @yourText.chomp
                     
-					mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastdodon_bearer_token)
+					mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastodon_bearer_token)
                    
 					mastodon_client.create_status(@yourText, {:sensitive => false})
                     

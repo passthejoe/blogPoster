@@ -57,7 +57,7 @@
 
 # FTP account and server information
 
-@your_ftp_domain           	= "ftp.YOUR_DOMAIN_HERE.com"
+@your_ftp_domain           		= "ftp.YOUR_DOMAIN_HERE.com"
 @your_ftp_login_name        	= "your_FTP_server_login_name"
 @your_ftp_password          	= "your_FTP_server_password"
 
@@ -76,7 +76,7 @@
 @ping_needed                	= true
 
 # Change this to the URL that pings your particular web site
-@your_website_to_ping 		= "http://myblog.com/requires/calling/a/special/url/to/rebuild/the/index"
+@your_website_to_ping 			= "http://myblog.com/requires/calling/a/special/url/to/rebuild/the/index"
 
 # Host to ping -- checking for a live Internet connection
 #
@@ -90,4 +90,4 @@
 # Cloudflare's 1.1.1.1
 # The IP of your own server
 #
-@host_to_ping			= "1.1.1.1" 
+@host_to_ping					= "1.1.1.1" 

@@ -16,18 +16,23 @@
 # installed), my new iMac running Debian 10 wanted "vi"
 # instead. Otherwise, it didn't work. Experiment until you
 # find what does work.
+#
+# GUI editors can be touchy, Geany works well in Linux, but
+# after editing your post title or text, you must quit from
+# the menu or with ctrl-q. If you quit by closing the window,
+# Ruby doesn't know you've left the editor, and the script will
+# hang. Console programs like Vim don't have these issues.
 
 # Examples:
 
 # @your_text_editor = "vim"
 # @your_text_editor = "vi"
-# @your_text_editor = "vim"
 # @your_text_editor = "gvim"
 # @your_text_editor = "nano"
 # @your_text_editor = "joe"
+# @your_text_editor = "geany"
 # @your_text_editor = "notepad"
 # @your_text_editor = "notepad++"
-
 
 @your_text_editor = "vim"
 

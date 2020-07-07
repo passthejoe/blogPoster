@@ -212,6 +212,7 @@ menu = ["",
                 #     $yourText = "#{$yourTitle}"
                 #  end
                 # Trim the full file name, not including the extension
+                # (Not coded as of 7/7/2020)
                 puts "\n#{@yourTitle}"
                 puts "#{@yourText} <#{@yourURL}>\n\n"
                 puts "File name: #{@yourFileName}"

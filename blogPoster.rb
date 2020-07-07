@@ -185,32 +185,33 @@ menu = ["",
                 ourDate = Date.today.strftime("%d")
                 # Crunching the Web page title into the 2nd half of our file name
                 # Make it all lower case
-                yourFileExtension = @yourTitle.downcase
+                fileNameWords = @yourTitle.downcase
                 # Substitute underscores for spaces
-                yourFileExtension.gsub!(/\s/, "_")
+                fileNameWords.gsub!(/\s/, "_")
                 # Remove all punctuation characters with \p{P}
                 # Remove all Math symbols, currency signs, dingbats, etc. with \p{S}
                 # Replace all with underscores
-                yourFileExtension.gsub!(/[\p{P}\p{S}]/, "_")
+                fileNameWords.gsub!(/[\p{P}\p{S}]/, "_")
                 # Remove doubled underscores
-                #yourFileExtension.gsub!("_{2}", "_")
+                #fileNameWords.gsub!("_{2}", "_")
                 # This used to have "" sted "_" -- 2017_1222
-                #yourFileExtension.gsub!(/__/, "_")
-                #yourFileExtension.gsub!(/__/, "_")
+                #fileNameWords.gsub!(/__/, "_")
+                #fileNameWords.gsub!(/__/, "_")
                 # Get rid of doubled underscores
-                yourFileExtension.gsub!(/_+/, "_")
+                fileNameWords.gsub!(/_+/, "_")
                 # Get rid of leading and trailing underscores
-                yourFileExtension.gsub!(/^_|_$/, "")
+                fileNameWords.gsub!(/^_|_$/, "")
                 # Get rid of blank spaces -- added 2/5/18
                 # note: could also get rid of doubled spaces earlier
-                #yourFileExtension.gsub!(" ", "")
+                #fileNameWords.gsub!(" ", "")
                 
-                @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_#{yourFileExtension}.txt"
+                @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_#{fileNameWords}.txt"
                 #if (urlBool = true)
                 #      $yourText = "#{$yourTitle} <#{$yourURL}>"
                 # else
                 #     $yourText = "#{$yourTitle}"
                 #  end
+                # Trim the full file name, not including the extension
                 puts "\n#{@yourTitle}"
                 puts "#{@yourText} <#{@yourURL}>\n\n"
                 puts "File name: #{@yourFileName}"
@@ -299,19 +300,19 @@ menu = ["",
             ourMonth = Date.today.strftime("%m")
             ourDate = Date.today.strftime("%d")
             
-            yourFileExtension = @yourTitle.downcase
+            fileNameWords = @yourTitle.downcase
             # Substitute underscores for spaces
-            yourFileExtension.gsub!(/\s/, "_")
+            fileNameWords.gsub!(/\s/, "_")
             # Remove all punctuation characters with \p{P}
             # Remove all Math symbols, currency signs, dingbats, etc. with \p{S}
             # Replace all with underscores
-            yourFileExtension.gsub!(/[\p{P}\p{S}]/, "_")
+            fileNameWords.gsub!(/[\p{P}\p{S}]/, "_")
             # Remove doubled underscores
-            # yourFileExtension.gsub!("_{2}", "_")
-            yourFileExtension.gsub!(/__/, "")
-            puts yourFileExtension
-            @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_#{yourFileExtension}.txt"
-            puts yourFileExtension
+            # fileNameWords.gsub!("_{2}", "_")
+            fileNameWords.gsub!(/__/, "")
+            puts fileNameWords
+            @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_#{fileNameWords}.txt"
+            puts fileNameWords
             puts "Social Directory choice = " + socialChoice
             puts "URL Bool = " + @urlBool.to_s
             puts "Social Bool = " + @socialDirectory.to_s

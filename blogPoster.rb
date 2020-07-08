@@ -1,18 +1,20 @@
 #!/usr/bin/env ruby
 
 # Blog Poster aims to make social and even regular blog posts
-# easy to create. Just entering a URL will help yuou generate a full
+# easy to create. Just entering a URL will help you generate a full
 # blog post that includes a file with title, body text and link
 # that can be uploaded to the flat-file blogging system of
-# your choice
+# your choice.
 #
 # This script is meant to send posts via FTP to a web server
 # for use in an Ode blog, but it can probably be easily modified
 # to create posts for other flat-file dynamic systems, such as
-# Ode's ancestor Bloxsom. It could even be hacked
-# to work with static-blogging systems such as Hugo or Jekyll,
-# where you might want to do a straight file transfer to your
-# local Documents directory and then trigger a build of your site.
+# Ode's ancestor Bloxsom.
+
+# It could even be hacked to work with static-blogging systems
+# such as Hugo or Jekyll, where you might want to do a straight
+# file transfer to your local Documents directory and then trigger
+# a build of your site.
 #
 # Automatic posting to Hugo blogs is on the roadmap.
 #
@@ -27,7 +29,9 @@
 # than it is to get "permission" from Twitter, though both are
 # very much doable.
 #
-# You will need development tools to build the mastodon-api gem
+# This script is written in the Ruby programming language.
+# Aside from a few Ruby gems and their dependencies, you will
+# need development tools to build the mastodon-api gem
 # in Linux. See the README for details.
 #
 # The README doesn't have the Mastodon access token info yet,
@@ -37,16 +41,19 @@
 #
 # Mastodon: https://joinmastodon.org/
 #
+# The Twitter Developer site: https://developer.twitter.com
+#
 # The author of this program is Steven Rosenberg (stevenhrosenberg@gmail.com).
+#
 # It is made available under [the MIT License](https://github.com/passthejoe/blogPoster/blob/master/README.md).
-
+#
 # Note the required gems for this program.
 #
 # The ones you'll have to install are:
 #
 # nokogiri
 # net-sftp
-# twitter
+# twitter (version 6.2.0, NOT version 7.0.0, unless you are not interested in posting to Mastodon)
 # net-ping
 # mastodon-api
 #
@@ -70,10 +77,8 @@ def check_for_config
     puts "\n\nEither this is your first time running blogPoster, or the configuration file is missing.\n"
     puts "\nBefore you proceed, quit this program, open blogPoster_configuration.rb in a text editor and fill in your information.\n"
     puts "\nSelect \'q\' to quit.\n"
-    
     else
     require_relative "blogPoster_configuration.rb"
-    
     end
 end
 
@@ -125,7 +130,7 @@ your microblog, Twitter and Mastodon."
 
 def runmenu
 
-# The menu is an array with the first and last entries left "blank"
+# The menu is an array of strings with the first and last entries left "blank"
 # to provide spacing
 
 menu = ["",

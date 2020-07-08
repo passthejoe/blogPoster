@@ -181,57 +181,53 @@ menu = ["",
                 puts "Your URL didn't work\n"
             else
                 @yourText = @yourTitle
+                
                 # To name your post file, use the Date module
                 # to get the year in four digits, the month
-                # and day in two digits -- all as strings
-                # using strftime
+                # and day in two digits, then use the Time
+                # module to get the hours, minutes and seconds
+                # -- all as strings using strftime.
                 ourYear = Date.today.strftime("%Y")
                 ourMonth = Date.today.strftime("%m")
                 ourDate = Date.today.strftime("%d")
                 ourHour = Time.now.strftime("%H")
                 ourMinute = Time.now.strftime("%M")
                 ourSecond = Time.now.strftime("%S")
-                #
-                # Add ourTime for hour/min/sec time of day
-                #
+                
                 # Crunching the Web page title into the 2nd half of our file name
+                
                 # Make it all lower case
                 fileNameWords = @yourTitle.downcase
+                
                 # Substitute underscores for spaces
                 fileNameWords.gsub!(/\s/, "_")
+                
                 # Remove all punctuation characters with \p{P}
                 # Remove all Math symbols, currency signs, dingbats, etc. with \p{S}
                 # Replace all with underscores
                 fileNameWords.gsub!(/[\p{P}\p{S}]/, "_")
+                
                 # Remove doubled underscores
-                #fileNameWords.gsub!("_{2}", "_")
-                # This used to have "" sted "_" -- 2017_1222
-                #fileNameWords.gsub!(/__/, "_")
-                #fileNameWords.gsub!(/__/, "_")
-                # Get rid of doubled underscores
                 fileNameWords.gsub!(/_+/, "_")
-                # Get rid of leading and trailing underscores
-                # fileNameWords.gsub!(/^_|_$/, "")
+                
                 # Get rid of leading underscore, we will get rid of trailing later
                 fileNameWords.gsub!(/^_/, "")
-                # Get rid of blank spaces -- added 2/5/18
-                # note: could also get rid of doubled spaces earlier
-                #fileNameWords.gsub!(" ", "")
                 
+                # Create the file name, not including the extension
                 @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_" + "#{ourHour}" + "#{ourMinute}" + "#{ourSecond}" + "_#{fileNameWords}"
-                #if (urlBool = true)
-                #      $yourText = "#{$yourTitle} <#{$yourURL}>"
-                # else
-                #     $yourText = "#{$yourTitle}"
-                #  end
-                #
-                # Trim the full file name, not including the extension
-                # (Not coded as of 7/7/2020)
-                # Trim the full prefix, remove trailing underscores, then add the .txt suffix
-                #
+                
+                # Trim the full file name, not including the extension,
+                # to the length specified by @max_file_name_length
+                # in the configuration
                 @yourFileName = @yourFileName[0,@max_file_name_length]
+                
+                # Remove trailing underscores
                 @yourFileName.gsub!(/_$/, "")
-                @yourFileName = @yourFileName + ".txt"
+                
+                # Add the file name extension
+                @yourFileName = @yourFileName + @file_name_extension
+                
+                # Print the output to the screen
                 puts "\n#{@yourTitle}"
                 puts "#{@yourText} <#{@yourURL}>\n\n"
                 puts "File name: #{@yourFileName}"
@@ -297,16 +293,21 @@ menu = ["",
             runmenu
         
         elsif yourTask == "r"
+            
             # Raw post - no link plus the "now" directory
+            
+            # Setting boolean variables for presence of a URL
+            # and use of an upload directory dedicated to
+            # social posts if your blog is set up that way.
             @urlBool = false
             @socialDirectory = false
             puts "Social directory?"
             socialChoice = gets.chomp
             if socialChoice == "y"
                 @socialDirectory = true
-            #elsif socialChoice == "n"
-             #   $socialDirectory = false
             end
+            
+            # Ask user for title and text of the post
             puts "Enter your title:"
             @yourTitle = gets.chomp
             puts "Enter your text:"
@@ -314,7 +315,9 @@ menu = ["",
             
              # To name your post file, use the Date module
              # to get the year in four digits, the month
-             # and day in two digits -- all as strings
+             # and day in two digits, then use the Time
+             # module to get time in hours, minutes
+             # and seconds -- all as strings
              # using strftime
              ourYear = Date.today.strftime("%Y")
              ourMonth = Date.today.strftime("%m")
@@ -323,36 +326,51 @@ menu = ["",
              ourMinute = Time.now.strftime("%M")
              ourSecond = Time.now.strftime("%S")
             
+            # Use the given title to create a file name
+            
+            # Make it all lower case
             fileNameWords = @yourTitle.downcase
+            
             # Substitute underscores for spaces
             fileNameWords.gsub!(/\s/, "_")
+            
             # Remove all punctuation characters with \p{P}
             # Remove all Math symbols, currency signs, dingbats, etc. with \p{S}
             # Replace all with underscores
             fileNameWords.gsub!(/[\p{P}\p{S}]/, "_")
+            
             # Remove doubled underscores
-            # fileNameWords.gsub!("_{2}", "_")
-            fileNameWords.gsub!(/__/, "")
+            fileNameWords.gsub!(/_+/, "_")
             
             # Get rid of leading underscore, we will get rid of trailing later
             fileNameWords.gsub!(/^_/, "")
             
+            # Print the output to the screen
             puts fileNameWords
-            # @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_#{fileNameWords}.txt"
+            
+            # Create the file name
             @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_" + "#{ourHour}" + "#{ourMinute}" + "#{ourSecond}" + "_#{fileNameWords}"
-            # Trim the full prefix, remove trailing underscores, then add the .txt suffix
-            #
-            @yourFileName = @yourFileName[0,@max_file_name_length]
-            @yourFileName.gsub!(/_$/, "")
-            @yourFileName = @yourFileName + ".txt"
             
+             # Trim the full file name, not including the extension,
+             # to the length specified by @max_file_name_length
+             # in the configuration
+             @yourFileName = @yourFileName[0,@max_file_name_length]
             
-            # puts fileNameWords
-            puts @yourFileName
-            puts "Social Directory choice = " + socialChoice
-            puts "URL Bool = " + @urlBool.to_s
-            puts "Social Bool = " + @socialDirectory.to_s
-            runmenu
+			 # Remove trailing underscores
+			 @yourFileName.gsub!(/_$/, "")
+            
+			 # Add the file name extension
+             @yourFileName = @yourFileName + @file_name_extension
+                
+             # Print the output to the screen
+             puts "\n#{@yourTitle}"
+             puts "#{@yourText}\n\n"
+             puts "File name: #{@yourFileName}"
+			 puts "Social Directory choice = " + socialChoice
+             puts "URL Bool = " + @urlBool.to_s
+             puts "Social Bool = " + @socialDirectory.to_s
+            
+             runmenu
     
         elsif yourTask == "e"
             # Display the full post

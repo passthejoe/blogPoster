@@ -39,8 +39,20 @@
 # Maximum length of file names for blog uploads:
 # This is both to keep Ruby from crashing
 # and to keep file names at a reasonable length.
-
+#
 @max_file_name_length = 100
+
+# File name extension
+# Make this whatever your blog/microblog
+# is looking for. Some want .txt, many want .md.
+# Don't forget the dot.
+#
+# Examples
+#
+# @file_name_extension = ".md"
+# @file_name_extension = ".html"
+#
+@file_name_extension = ".txt"
 
 # Twitter API
 

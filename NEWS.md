@@ -1,6 +1,20 @@
 # blogPoster News
 
-#### News on June 24, 2020
+#### July 8, 2020
+
+I just landed a few new features and bug fixes:
+
+* While there was a file-length limit variable in the configuration file, the code to limit file length was never written. Now it is.
+
+* In order to implement file length, regex to eliminate leading and trailing underscores was broken up and re-implemented.
+
+* Date stamps in file names now include a number representing hours, minutes and seconds of the day. Aside from a visible time stamp, this allows you to create posts based on the same URL without the script generating the same file name and then overwriting the previous post file on the server. Theoretically the same URL can now be posted every second without file names clashing.
+
+All of this code is still in the realm of "testing," and remains in the Development branch in Git. When it appears to be working well, I will move it to Main.
+
+**Still to do on this feature:** A LOT of code is doubled for URL-based and "raw" (not URL-based) posts. Creating methods or classes to modularize and DRY the code.
+
+#### June 24, 2020
 
 I figured out the conflict between two Ruby gems, `mastodon-api` and `twitter` that made the script crash in some instances. Both gems have the `http` gem as a dependency, but the newer version that `twitter 7.0.0` requires is too "new" for `mastodon-api`. Until `mastodon-api` requires the same version of `http`, when installing the `twitter` gem, please specify `twitter 6.2.0`.
 
@@ -10,7 +24,7 @@ That is generally done like this (add `sudo` where appropriate):
 	
 More instructions on gem installation have been added to the README.
 
-#### News on June 21, 2020
+#### June 21, 2020
 
 The move from `master` to `main` didn't go as smoothly as I would have liked. The problems grew from my git setup that pushed to two separate remote repositories. I am re-configuring to push to a single repo. This project is staying on GitHub. My [Zen of Debian](https://codeberg.org/passthejoe/zen-of-debian) project is still on both sites but will probably land on Codeberg.
 
@@ -20,11 +34,11 @@ My biggest error is getting my `.git/config` commands mixed up between this repo
 
 I think (or _hope_ at any rate) there is a better way to maintain two separate remotes with one mirroring the other that doesn't involve pushing to two at once.
 
-#### News on June 15, 2020
+#### June 15, 2020
 
 I agree with [the movement that says](https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/) the technology terms "master/slave" should go away, and the primary Git repository in this project is now called `main` instead of `master`.
 
-#### News on June 10, 2020
+#### June 10, 2020
 
 The `network_ping` feature has landed. Now the script will check for a live internet connection before attempting to upload a file to the blog.
 

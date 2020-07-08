@@ -206,7 +206,9 @@ menu = ["",
                 # Get rid of doubled underscores
                 fileNameWords.gsub!(/_+/, "_")
                 # Get rid of leading and trailing underscores
-                fileNameWords.gsub!(/^_|_$/, "")
+                # fileNameWords.gsub!(/^_|_$/, "")
+                # Get rid of leading underscore, we will get rid of trailing later
+                fileNameWords.gsub!(/^_/, "")
                 # Get rid of blank spaces -- added 2/5/18
                 # note: could also get rid of doubled spaces earlier
                 #fileNameWords.gsub!(" ", "")
@@ -220,9 +222,11 @@ menu = ["",
                 #
                 # Trim the full file name, not including the extension
                 # (Not coded as of 7/7/2020)
-                # Trim the full prefix, then add the .txt suffix
+                # Trim the full prefix, remove trailing underscores, then add the .txt suffix
                 #
-                @yourFileName = @yourFileName[0,@max_file_name_length] + ".txt"
+                @yourFileName = @yourFileName[0,@max_file_name_length]
+                @yourFileName.gsub!(/_$/, "")
+                @yourFileName = @yourFileName + ".txt"
                 puts "\n#{@yourTitle}"
                 puts "#{@yourText} <#{@yourURL}>\n\n"
                 puts "File name: #{@yourFileName}"
@@ -324,10 +328,20 @@ menu = ["",
             # Remove doubled underscores
             # fileNameWords.gsub!("_{2}", "_")
             fileNameWords.gsub!(/__/, "")
+            
+            # Get rid of leading underscore, we will get rid of trailing later
+            fileNameWords.gsub!(/^_/, "")
+            
             puts fileNameWords
             # @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_#{fileNameWords}.txt"
             @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_" + "#{ourHour}" + "#{ourMinute}" + "#{ourSecond}" + "_#{fileNameWords}"
-            @yourFileName = @yourFileName[0,@max_file_name_length] + ".txt"
+            # Trim the full prefix, remove trailing underscores, then add the .txt suffix
+            #
+            @yourFileName = @yourFileName[0,@max_file_name_length]
+            @yourFileName.gsub!(/_$/, "")
+            @yourFileName = @yourFileName + ".txt"
+            
+            
             # puts fileNameWords
             puts @yourFileName
             puts "Social Directory choice = " + socialChoice

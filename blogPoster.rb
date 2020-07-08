@@ -183,6 +183,9 @@ menu = ["",
                 ourYear = Date.today.strftime("%Y")
                 ourMonth = Date.today.strftime("%m")
                 ourDate = Date.today.strftime("%d")
+                #
+                # Add ourTime for hour/min/sec time of day
+                #
                 # Crunching the Web page title into the 2nd half of our file name
                 # Make it all lower case
                 fileNameWords = @yourTitle.downcase
@@ -211,8 +214,11 @@ menu = ["",
                 # else
                 #     $yourText = "#{$yourTitle}"
                 #  end
+                #
                 # Trim the full file name, not including the extension
                 # (Not coded as of 7/7/2020)
+                # Trim the full prefix, then add the .txt suffix
+                #
                 puts "\n#{@yourTitle}"
                 puts "#{@yourText} <#{@yourURL}>\n\n"
                 puts "File name: #{@yourFileName}"

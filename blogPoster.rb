@@ -183,9 +183,9 @@ menu = ["",
                 ourYear = Date.today.strftime("%Y")
                 ourMonth = Date.today.strftime("%m")
                 ourDate = Date.today.strftime("%d")
-                ourHour = Date.today.strftime("%H")
-                ourMinute = Date.today.strftime("%M")
-                ourSecond = Date.today.strftime("%S")
+                ourHour = Time.now.strftime("%H")
+                ourMinute = Time.now.strftime("%M")
+                ourSecond = Time.now.strftime("%S")
                 #
                 # Add ourTime for hour/min/sec time of day
                 #
@@ -314,9 +314,9 @@ menu = ["",
              ourYear = Date.today.strftime("%Y")
              ourMonth = Date.today.strftime("%m")
              ourDate = Date.today.strftime("%d")
-             ourHour = Date.today.strftime("%H")
-             ourMinute = Date.today.strftime("%M")
-             ourSecond = Date.today.strftime("%S")
+             ourHour = Time.now.strftime("%H")
+             ourMinute = Time.now.strftime("%M")
+             ourSecond = Time.now.strftime("%S")
             
             fileNameWords = @yourTitle.downcase
             # Substitute underscores for spaces

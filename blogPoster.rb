@@ -177,12 +177,15 @@ menu = ["",
             else
                 @yourText = @yourTitle
                 # To name your post file, use the Date module
-                # to get the year in four digits, and the month
+                # to get the year in four digits, the month
                 # and day in two digits -- all as strings
                 # using strftime
                 ourYear = Date.today.strftime("%Y")
                 ourMonth = Date.today.strftime("%m")
                 ourDate = Date.today.strftime("%d")
+                ourHour = Date.today.strftime("%H")
+                ourMinute = Date.today.strftime("%M")
+                ourSecond = Date.today.strftime("%S")
                 #
                 # Add ourTime for hour/min/sec time of day
                 #
@@ -208,7 +211,7 @@ menu = ["",
                 # note: could also get rid of doubled spaces earlier
                 #fileNameWords.gsub!(" ", "")
                 
-                @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_#{fileNameWords}.txt"
+                @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_" + "#{ourHour}" + "#{ourMinute}" + "#{ourSecond}" + "_#{fileNameWords}"
                 #if (urlBool = true)
                 #      $yourText = "#{$yourTitle} <#{$yourURL}>"
                 # else
@@ -219,6 +222,7 @@ menu = ["",
                 # (Not coded as of 7/7/2020)
                 # Trim the full prefix, then add the .txt suffix
                 #
+                @yourFileName = @yourFileName[0,@max_file_name_length] + ".txt"
                 puts "\n#{@yourTitle}"
                 puts "#{@yourText} <#{@yourURL}>\n\n"
                 puts "File name: #{@yourFileName}"
@@ -299,13 +303,16 @@ menu = ["",
             puts "Enter your text:"
             @yourText = gets.chomp
             
-            # To name your post file, use the Date module
-            # to get the year in four digits, and the month
-            # and day in two digits -- all as strings
-            # using strftime
-            ourYear = Date.today.strftime("%Y")
-            ourMonth = Date.today.strftime("%m")
-            ourDate = Date.today.strftime("%d")
+             # To name your post file, use the Date module
+             # to get the year in four digits, the month
+             # and day in two digits -- all as strings
+             # using strftime
+             ourYear = Date.today.strftime("%Y")
+             ourMonth = Date.today.strftime("%m")
+             ourDate = Date.today.strftime("%d")
+             ourHour = Date.today.strftime("%H")
+             ourMinute = Date.today.strftime("%M")
+             ourSecond = Date.today.strftime("%S")
             
             fileNameWords = @yourTitle.downcase
             # Substitute underscores for spaces
@@ -318,8 +325,11 @@ menu = ["",
             # fileNameWords.gsub!("_{2}", "_")
             fileNameWords.gsub!(/__/, "")
             puts fileNameWords
-            @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_#{fileNameWords}.txt"
-            puts fileNameWords
+            # @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_#{fileNameWords}.txt"
+            @yourFileName = "#{ourYear}" + "_" + "#{ourMonth}" + "#{ourDate}" + "_" + "#{ourHour}" + "#{ourMinute}" + "#{ourSecond}" + "_#{fileNameWords}"
+            @yourFileName = @yourFileName[0,@max_file_name_length] + ".txt"
+            # puts fileNameWords
+            puts @yourFileName
             puts "Social Directory choice = " + socialChoice
             puts "URL Bool = " + @urlBool.to_s
             puts "Social Bool = " + @socialDirectory.to_s

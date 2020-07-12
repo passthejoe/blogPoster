@@ -159,6 +159,10 @@ menu = ["",
 
     puts menu
     
+end
+
+runmenu
+    
     # Ask user to pick a task
     puts "Choose a task\n\n"
     yourTask = gets.downcase.chomp
@@ -636,7 +640,7 @@ menu = ["",
             puts "Your choice isn't in the list above, so enter it again"
             runmenu
 		end
-end
+
 
 # Run the method the first time the program is executed
 runmenu

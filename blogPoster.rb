@@ -159,15 +159,13 @@ menu = ["",
 
     puts menu
     
-end
 
-runmenu
     
     # Ask user to pick a task
     puts "Choose a task\n\n"
     yourTask = gets.downcase.chomp
     puts "You chose #{yourTask}"
-
+    
         if yourTask == "a"
             # Set booleans for including a URL and social directory
             @urlBool = true
@@ -641,6 +639,7 @@ runmenu
             runmenu
 		end
 
+end
 
-# Run the method the first time the program is executed
+# Return to the menu
 runmenu

@@ -2,7 +2,7 @@
 
 #### July 19, 2020
 
-* I rewrote the method that checks whether a live internet connection is present and added it to the menu
+* I rewrote the method that checks whether a live internet connection is present and added it to the menu. It uses a case (aka switch) statement just because I wanted to try one.
 
 * I updated a laptop from Fedora 30 to 32, and it runs Ruby 2.7. It had a new version of the Twitter gem but still had an older version of the HTTP gem, so it SHOULD be compatible with the mastodon-api gem. I haven't done a Git pull with the latest code, so I haven't tested this yet.
 

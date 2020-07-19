@@ -107,6 +107,10 @@ end
 
 load_twitter_keys
 
+def which_ruby
+	puts "\nYou are running Ruby #{RUBY_VERSION}"
+end
+
 # Display the menu, ask for user input and then execute based on
 # that input
 
@@ -123,7 +127,12 @@ end
 
 # Checking here for a connection -- might as well do that.
 connected = are_we_connected?(@host_to_ping)
+
+# Welcome messages
+
 puts "\nThe computer is connected to the internet (true/false): #{connected}"
+
+which_ruby
 
 puts "\nWelcome to blogPoster, the command-line program \nthat posts to \
 your microblog, Twitter and Mastodon."

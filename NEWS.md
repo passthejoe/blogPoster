@@ -1,5 +1,19 @@
 # blogPoster News
 
+#### July 19, 2020
+
+* I rewrote the method that checks whether a live internet connection is present and added it to the menu
+
+* I updated a laptop from Fedora 30 to 32, and it runs Ruby 2.7. It had a new version of the Twitter gem but still had an older version of the HTTP gem, so it SHOULD be compatible with the mastodon-api gem. I haven't done a Git pull with the latest code, so I haven't tested this yet.
+
+* In Fedora's Ruby 2.7, I am getting a few Ruby warnings about using methods in ways that are deprecated. I'll have to look into this and see what changes I can make.
+
+* The last I looked, it's not possible to run blogPoster on Ruby 2.7 in Windows due to missing gems. It's interesting that it will run in Fedora. I tend to get as many gems from Fedora packages as possible. It sure makes upgrades easier. Already in Fedora I needed to get rid of my local .gems directory to resolve some issues. The Fedora-packaged gems all upgraded with no issues. 
+
+* I added a method that checks the system's version of Ruby and outputs it as part of the welcome messages.
+
+* All welcome messages are now methods.
+
 #### July 8, 2020
 
 I just landed a few new features and bug fixes:

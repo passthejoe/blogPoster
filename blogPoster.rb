@@ -126,16 +126,36 @@ def are_we_connected?(host)
 end
 
 # Checking here for a connection -- might as well do that.
-connected = are_we_connected?(@host_to_ping)
+
+def is_computer_connected?
+	connected = are_we_connected?(@host_to_ping)
+	
+	case connected
+	when true
+		puts "\nThis computer is connected to the internet"
+	else
+		puts "\nThis computer is NOT connected to the internet"
+	end
+end
+
+def welcome
+	puts "\nWelcome to blogPoster, the command-line program \nthat posts to \
+your microblog, Twitter and Mastodon."
+end
+
+#connected = are_we_connected?(@host_to_ping)
 
 # Welcome messages
 
-puts "\nThe computer is connected to the internet (true/false): #{connected}"
+#puts "\nThe computer is connected to the internet (true/false): #{connected}"
+
+welcome
+
+is_computer_connected?
 
 which_ruby
 
-puts "\nWelcome to blogPoster, the command-line program \nthat posts to \
-your microblog, Twitter and Mastodon."
+
 
 def runmenu
 
@@ -155,6 +175,7 @@ menu = ["",
         "g - post file",
         "h - edit title",
         "i - edit text",
+        "p - is computer connected?",
         "u - send to Twitter",
         "r - raw post (no link)",
         "l - list unarchived posts",
@@ -503,6 +524,11 @@ menu = ["",
             puts "Your new text: #{@yourText}"
             
             runmenu
+            
+        elsif yourTask == 'p'
+			is_computer_connected?
+			
+			runmenu
 
         elsif yourTask == 'n'
             # Change the URL for the current post

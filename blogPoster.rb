@@ -627,40 +627,32 @@ menu = ["",
             begin
                                 
                 if @urlBool && length_ok
-                    puts "Your post is not too long ..."
-                    @yourText = @yourText.chomp
-                    
-                   # mastodon_client = Mastodon::REST::Client.new(base_url: '#{@mastodon_base_url}', bearer_token: '#{@mastodon_bearer_token}')
-
-					# mastodon_client.create_status("#{@yourText} #{@yourURL}", {:sensitive => false})
-					
-					mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastodon_bearer_token)
-
-					mastodon_client.create_status(@yourText + " " + @yourURL, {:sensitive => false})
-					
-					puts "Post sent to Mastodon"
+			puts "Your post is not too long ..."
+        	        @yourText = @yourText.chomp
+	               	mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastodon_bearer_token)
+			mastodon_client.create_status(@yourText + " " + @yourURL, {:sensitive => false})
+			puts "Post sent to Mastodon"
 					
                 elsif length_ok
-                    puts "Your post is not too long ..."
-                    @yourText = @yourText.chomp
-                    
-					mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastodon_bearer_token)
-                   
-					mastodon_client.create_status(@yourText, {:sensitive => false})
-                    
-                    puts "Post sent to Mastodon"
-                else
-                    puts "Please shorten your text length to
-                    #{@mastodon_max_length} characters, including any
-                    URL that is included.
-                    Click 'i' to edit your text"
+                	puts "Your post is not too long ..."
+                	@yourText = @yourText.chomp
+                	mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastodon_bearer_token)
+                	mastodon_client.create_status(@yourText, {:sensitive => false})
+                    	puts "Post sent to Mastodon"
+                
+		else
+		        puts "Please shorten your text length to
+                    	#{@mastodon_max_length} characters, including any
+                    	URL that is included.
+                    	Click 'i' to edit your text"
                 end
-				rescue
-					puts "\nSomething happened with Mastodon"
-					puts "Your toot did not go through"
-				else
-					puts "Success!"
-				end
+		
+		rescue
+			puts "\nSomething happened with Mastodon"
+			puts "Your toot did not go through"
+		else
+			puts "Success!"
+	    end
 	       
             # Return to the menu
             runmenu

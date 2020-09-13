@@ -207,7 +207,7 @@ menu = ["",
             
             begin
                 # Use Nokogiri to open the Web page and get the title
-                targetPage = Nokogiri::HTML(open(@yourURL)) 
+                targetPage = Nokogiri::HTML(URI.open(@yourURL)) 
                 @yourTitle = targetPage.css("title")[0].text.chomp
             rescue
                 puts "Your URL didn't work\n"

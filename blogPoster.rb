@@ -473,7 +473,7 @@ menu = ["",
             
 					puts "Plus I will ping the blog so this new entry publishes"
 					puts "Pinging now ..."
-					ping_it = open(yourWebSiteToPing).read
+					ping_it = URI.open(yourWebSiteToPing).read
 					puts "Pinged ... should be ready"
 				end
             

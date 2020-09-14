@@ -651,10 +651,10 @@ menu = ["",
 			puts "\nSomething happened with Mastodon"
 			puts "Your toot did not go through"
 			if #{RUBY_VERSION}.include? "2.7"
-				puts "... unless you are running Ruby 2.7,"
-				puts "and it is very likely your Toot"
-				puts "did go through. Check your Mastodon"
-				puts "instance to be sure"
+				puts "... unless you are running Ruby 2.7,
+				and it is very likely your Toot
+				did go through. Check your Mastodon
+				instance to be sure"
 			end
 		else
 			puts "Success!"

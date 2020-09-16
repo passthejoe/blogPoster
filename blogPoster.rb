@@ -627,7 +627,7 @@ menu = ["",
             begin
                                 
                 if @urlBool && length_ok
-			puts "Your post is not too long ..."
+				puts "Your post is not too long ..."
         	        @yourText = @yourText.chomp
 	               	mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastodon_bearer_token)
 			mastodon_client.create_status(@yourText + " " + @yourURL, {:sensitive => false})
@@ -640,7 +640,7 @@ menu = ["",
                 	mastodon_client.create_status(@yourText, {:sensitive => false})
                     	puts "Post sent to Mastodon"
                 
-		else
+				else
 		        puts "Please shorten your text length to
                     	#{@mastodon_max_length} characters, including any
                     	URL that is included.
@@ -650,9 +650,9 @@ menu = ["",
 		rescue
 			puts "\nSomething happened with Mastodon"
 			puts "Your toot did not go through"
-                        if #{RUBY_VERSION}.include? "2.7"
-                          print "\n... unless you are running Ruby 2.7,\nwhich this program says is the case.\n\nFor Ruby 2.7 users posting to\nMastodon, check your instance.\nIt is very likely your toot\nhas been posted.\n"
-			end
+               if RUBY_VERSION.include? "2.7"
+               print "\n... unless you are running Ruby 2.7,\nwhich this program says is the case.\n\nFor Ruby 2.7 users posting to\nMastodon, check your instance.\nIt is very likely your toot\nhas been posted.\n"
+        end
 		else
 			puts "Success!"
 	    end

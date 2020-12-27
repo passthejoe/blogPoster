@@ -66,6 +66,8 @@ then ...
 
 The `twitter` packaged in most Linux distributions is version 6.x, so there is no problem if you use apt to install it in Debian/Ubuntu distros.
 
+For users of Red Hat Enterprise Linux 8 or CentOS 8, the `nokogiri`, `net-sftp` and `net-ping` gems are available from the EPEL repo. You'll have to install the `twitter` and `mastodon-api` gems with `gem install`.
+
 But in Windows, `twitter 7.0.0` won't work. Instead install version 6.2.0 like this:
 
 	$ gem install twitter -v 6.2.0
@@ -78,7 +80,7 @@ Windows and MacOS don't generally allow users to install software via repository
 
 If you don't want to rely on Linux packages for your Ruby gems, you can use `gem install` for everything.
 
-**Which version of Ruby?** As of March 1, 2020, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows. It does NOT run in Ruby 2.7 in Windows because all the gems aren't available.
+**Which version of Ruby?** As of Dec. 27, 2020, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows. It does NOT run in Ruby 2.7 because some of the code is erroring out. I am looking into fixes, especially because Ubuntu and Fedora are both shipping Ruby 2.7 in their current releases.
 
 I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I have done some tests in MacOS, but I need to revisit them.
 
@@ -98,7 +100,6 @@ Run these commands. Again, I could cram them all on one line, but I prefer to ru
 	$ sudo gem install net-ping
 	$ sudo gem install mastodon-api
 	$ sudo gem install twitter -v 6.2.0
-
 
 **Why does blogPoster use an external text editor, and which one should I choose?**
 

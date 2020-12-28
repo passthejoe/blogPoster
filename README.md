@@ -52,6 +52,8 @@ And if you are running this program on Windows, install this one, too:
 
 The `Nokogiri` and `net-sftp` gems are available as a package in most Linux distributions, which works great if you are using your distribution's Ruby implementation.
 
+**Tips from the Nokogiri project on installing the gem:** They [offer instructions](https://nokogiri.org/tutorials/installing_nokogiri.html) for Linux, MacOS, Windows, FreeBSD and OpenBSD. 
+
 Some Linux distributions have packaged the `Twitter` gem. Debian and Ubuntu offer it. Fedora does not. For this and any other gems that aren't packaged by your distribution, use Ruby's `gem install` command can be used to add them. (In Windows, this will be every gem, and you can absolutely use `gem install` for everything in Linux, too. I'm sure there are Rubyists who recommend it.)
 
 And as I say above, on Windows computers, you'll have to add the `win32-security` gem. Using `gem install` to add `net-ping` doesn't "require" `win32-security`, but without it the script will crash.

@@ -46,7 +46,7 @@ Install the following Ruby gems:
 * `net-ping`
 * `mastodon-api`
 
-And if you are running this program on Windows, install this one, too:
+And if you are running this program on Windows, install this one too:
 
 * `win32-security` (Without this gem, `net-ping` won't run on Windows systems)
 

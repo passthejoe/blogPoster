@@ -66,11 +66,17 @@ then ...
 	
 * There is a conflict between the `twitter` and `mastodon-api` Ruby gems. `twitter 7.0.0` and `mastodon-api` use different versions of the `http` gem, and the script crashes when both are installed. The current workaround is to install an older version of the `twitter` gem.
 
+And with Ruby 2.7.x, the `mastodon-api` gem is throwing errors but still works. The "rescue" statement that tells you whether or not a Mastodon toot has gone through always responds in the negative on Ruby 2.7, so I have added a statement that tells Ruby 2.7 users to check for their toots manually. That's the best I can do until the `mastodon-api` gem is fixed. And hopefully that fix will update the version of `http` so that `mastodon-api` and `twitter` can co-exist in their up-to-date versions.
+
 The `twitter` packaged in most Linux distributions is version 6.x, so there is no problem if you use apt to install it in Debian/Ubuntu distros.
 
+<<<<<<< HEAD
 For users of Red Hat Enterprise Linux 8 or CentOS 8, the `nokogiri`, `net-sftp` and `net-ping` gems are available from the EPEL repo. You'll have to install the `twitter` and `mastodon-api` gems with `gem install`.
 
 But in Windows, `twitter 7.0.0` won't work. Instead install version 6.2.0 like this:
+=======
+But in Windows or when installing your gems with the `gem install` program instead of your Linux distro's (or BSD project's) package manager, `twitter 7.0.0` won't work. Instead install version 6.2.0 like this:
+>>>>>>> development
 
 	$ gem install twitter -v 6.2.0
 
@@ -82,9 +88,14 @@ Windows and MacOS don't generally allow users to install software via repository
 
 If you don't want to rely on Linux packages for your Ruby gems, you can use `gem install` for everything.
 
+<<<<<<< HEAD
 **Which version of Ruby?** As of Dec. 27, 2020, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows. It does NOT run in Ruby 2.7 because some of the code is erroring out. I am looking into fixes, especially because Ubuntu and Fedora are both shipping Ruby 2.7 in their current releases.
 
+=======
+>>>>>>> development
 I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I have done some tests in MacOS, but I need to revisit them.
+
+**Which version of Ruby?** As of March 1, 2020, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows. I am working on smoothing things over in Ruby 2.7 in Linux (which is what Ubuntu 20.04 LTS is shipping). Last time I checked, it did not run in Ruby 2.7 in Windows because all the gems weren't available. Once I have all of the issues ironed out in Ruby 2.7 in Ubuntu, I'll do some testing with Ruby 2.7 in Windows.
 
 ### Cheat sheet for installing Ruby gems to run blogPoster
 

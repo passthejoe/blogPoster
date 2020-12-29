@@ -70,17 +70,15 @@ And with Ruby 2.7.x, the `mastodon-api` gem is throwing errors but still works. 
 
 The `twitter` packaged in most Linux distributions is version 6.x, so there is no problem if you use apt to install it in Debian/Ubuntu distros.
 
-<<<<<<< HEAD
 For users of Red Hat Enterprise Linux 8 or CentOS 8, the `nokogiri`, `net-sftp` and `net-ping` gems are available from the EPEL repo. You'll have to install the `twitter` and `mastodon-api` gems with `gem install`.
 
-But in Windows, `twitter 7.0.0` won't work. Instead install version 6.2.0 like this:
-=======
-But in Windows or when installing your gems with the `gem install` program instead of your Linux distro's (or BSD project's) package manager, `twitter 7.0.0` won't work. Instead install version 6.2.0 like this:
->>>>>>> development
+**Note about the twitter gem (if you are also installing the mastodon-api gem):**
+
+There is a conflict over version of the `http` gem between the `twitter` and `mastodon-api` gems. Eventually (I hope) the `mastodon-api` developers will fix their gem, but until then, only install version 7.0.0 of the `twitter` gem if you DON'T install the `mastodon-api` gem (and don't want to post to a Mastodon instance).
+
+Instead use the older version 6.2.0 of the `twitter` gem to avoid the `http` conflict:
 
 	$ gem install twitter -v 6.2.0
-
-I will keep an eye on this situation, and I need to do a test in Fedora to see if everything works.
 
 **Note on Ruby Gems:** In response to a tweet about using Linux distribution packages to install Ruby gems, a couple of developers replied to say that they don't recommend using distribution-packaged gems, or even distribution-packaged Ruby. (Many favor the use of [RVM](https://rvm.io/), which is something I'm open to trying but haven't yet. But they definitely are in favor of getting gems via Ruby's `gem install` program.
 
@@ -88,11 +86,8 @@ Windows and MacOS don't generally allow users to install software via repository
 
 If you don't want to rely on Linux packages for your Ruby gems, you can use `gem install` for everything.
 
-<<<<<<< HEAD
 **Which version of Ruby?** As of Dec. 27, 2020, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows. It does NOT run in Ruby 2.7 because some of the code is erroring out. I am looking into fixes, especially because Ubuntu and Fedora are both shipping Ruby 2.7 in their current releases.
 
-=======
->>>>>>> development
 I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I have done some tests in MacOS, but I need to revisit them.
 
 **Which version of Ruby?** As of March 1, 2020, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows. I am working on smoothing things over in Ruby 2.7 in Linux (which is what Ubuntu 20.04 LTS is shipping). Last time I checked, it did not run in Ruby 2.7 in Windows because all the gems weren't available. Once I have all of the issues ironed out in Ruby 2.7 in Ubuntu, I'll do some testing with Ruby 2.7 in Windows.
@@ -133,7 +128,6 @@ As I say below, setting Vim as your preferred blogPoster text editor is a great 
 **No.** You can use blogPoster just for posting to Twitter or Mastodon, or just for posting to your blog/microblog. It's flexible that way.
 
 While the blog-posting portion of blogPoster in its default configuration is very much [Ode](http://ode.io)-specific, you can and should modify it for your file-based blogging system. As I say above, this is on my roadmap for the project.
-
 
 ### Uploading to a blog or site via secure FTP
 

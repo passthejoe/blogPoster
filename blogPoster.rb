@@ -111,6 +111,10 @@ def which_ruby
 	puts "\nYou are running Ruby #{RUBY_VERSION}"
 end
 
+def ruby_number
+	@our_ruby_number = RUBY_VERSION.to_f
+end
+
 # Display the menu, ask for user input and then execute based on
 # that input
 
@@ -155,7 +159,7 @@ is_computer_connected?
 
 which_ruby
 
-
+ruby_number
 
 def runmenu
 
@@ -650,9 +654,11 @@ menu = ["",
 		rescue
 			puts "\nSomething happened with Mastodon"
 			puts "Your toot did not go through"
-               if RUBY_VERSION.include? "2.7"
-               print "\n... unless you are running Ruby 2.7,\nwhich this program says is the case.\n\nFor Ruby 2.7 users posting to\nMastodon, check your instance.\nIt is very likely your toot\nhas been posted.\n"
-        end
+			# ruby_number
+            #   if RUBY_VERSION.include? "2.7"
+			if @our_ruby_number >= 2.7
+               print "\n... unless you are running Ruby 2.7 or later,\nwhich this program says is the case.\n\nFor Mastodon users who are running\nRuby 2.7 or later, check your instance.\nIt is very likely your toot\nhas been posted.\n"
+		end
 		else
 			puts "Success!"
 	    end

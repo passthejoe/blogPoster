@@ -56,7 +56,7 @@ And as I say above, on Windows computers, you'll have to add the `win32-security
 
 * On Debian/Ubuntu Linux systems, in order to successfully install the Mastodon gem with `sudo gem install mastodon-api`, you must first install the proper development tools:
 
-`$ sudo apt install ruby-dev gcc make`
+`$ sudo apt install ruby-dev gcc make g++`
 then ...
 `$ sudo gem install mastodon-api`
 	

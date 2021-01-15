@@ -61,9 +61,7 @@ And as I say above, on Windows computers, you'll have to add the `win32-security
 * On Debian/Ubuntu Linux systems, in order to successfully install the Mastodon gem with `sudo gem install mastodon-api`, you must first install the proper development tools:
 
 	`$ sudo apt install ruby-dev gcc make g++`
-
 then ...
-	
 	`$ sudo gem install mastodon-api`
 	
 * There is a conflict between the `twitter` and `mastodon-api` Ruby gems. `twitter 7.0.0` and `mastodon-api` use different versions of the `http` gem, and the script crashes when both are installed. The current workaround is to install an older version of the `twitter` gem.
@@ -86,8 +84,11 @@ Windows and MacOS don't generally allow users to install software via repository
 
 If you don't want to rely on Linux packages for your Ruby gems, you can use `gem install` for everything.
 
+<<<<<<< HEAD
 **Which version of Ruby?** As of Dec. 27, 2020, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows. It does NOT run in Ruby 2.7 because some of the code is erroring out. I am looking into fixes, especially because Ubuntu and Fedora are both shipping Ruby 2.7 in their current releases.
 
+=======
+>>>>>>> development
 I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I have done some tests in MacOS, but I need to revisit them.
 
 **Which version of Ruby?** As of March 1, 2020, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5 and 2.6 in Linux and Windows. I am working on smoothing things over in Ruby 2.7 in Linux (which is what Ubuntu 20.04 LTS is shipping). Last time I checked, it did not run in Ruby 2.7 in Windows because all the gems weren't available. Once I have all of the issues ironed out in Ruby 2.7 in Ubuntu, I'll do some testing with Ruby 2.7 in Windows.

@@ -60,9 +60,9 @@ And as I say above, on Windows computers, you'll have to add the `win32-security
 
 * On Debian/Ubuntu Linux systems, in order to successfully install the Mastodon gem with `sudo gem install mastodon-api`, you must first install the proper development tools:
 
-	$ sudo apt install ruby-dev gcc make
+	`$ sudo apt install ruby-dev gcc make g++`
 then ...
-	$ sudo gem install mastodon-api
+	`$ sudo gem install mastodon-api`
 	
 * There is a conflict between the `twitter` and `mastodon-api` Ruby gems. `twitter 7.0.0` and `mastodon-api` use different versions of the `http` gem, and the script crashes when both are installed. The current workaround is to install an older version of the `twitter` gem.
 
@@ -70,13 +70,9 @@ And with Ruby 2.7.x, the `mastodon-api` gem is throwing errors but still works. 
 
 The `twitter` packaged in most Linux distributions is version 6.x, so there is no problem if you use apt to install it in Debian/Ubuntu distros.
 
-<<<<<<< HEAD
 For users of Red Hat Enterprise Linux 8 or CentOS 8, the `nokogiri`, `net-sftp` and `net-ping` gems are available from the EPEL repo. You'll have to install the `twitter` and `mastodon-api` gems with `gem install`.
 
-But in Windows, `twitter 7.0.0` won't work. Instead install version 6.2.0 like this:
-=======
 But in Windows or when installing your gems with the `gem install` program instead of your Linux distro's (or BSD project's) package manager, `twitter 7.0.0` won't work. Instead install version 6.2.0 like this:
->>>>>>> development
 
 	$ gem install twitter -v 6.2.0
 

@@ -10,11 +10,11 @@ blogPoster can also create posts "from scratch," meaning you can begin by inputt
 
 The way the app is structured right now, it creates and formats posts for an [Ode](http://ode.io) blog and the [Twitter](http://twitter.com) and [Mastodon](https://joinmastodon.org/) social-media services. 
 
-Mastodon posting is new. It works, but I need to add more documentation.
+**Update on 7/11/21:** While Mastodon posting works, the `mastodon-api` gem's problems, coupled with the fact that it is unmaintained, means I'm going to experiment with *updating* the `twitter` and `http` gems and *not* installing the `mastodon-api` gem to see how that configuration works in Ruby 3.x. It may be time to cut Mastodon support.
 
 I'm pretty sure you haven't heard of [Ode](http://ode.io), the Rob Reed-coded, Perl-based blogging software that is inspired by [Bloxsom](http://blosxom.sourceforge.net/) ([see a little more on Wikipedia](https://en.wikipedia.org/wiki/Blosxom)).
 
-I have been using Ode as my personal blogging system for many years now, and right now Ode is running [my microblog](http://updates.passthejoe.net).
+I used Ode as my personal blogging system for many years (that site is archived [here](https://stevenrosenberg.nfshost.com/blog/) now), and right now Ode is running [my microblog](http://updates.passthejoe.net).
 
 Ode is well-suited to a project like a personal microblog because it's easy to modify the *themes* to show just the post body, though I don't think that's strictly necessary for a microblog site using a traditional blog CMS like WordPress.
 

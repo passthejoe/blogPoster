@@ -67,7 +67,7 @@ require "date"
 require "net/sftp"
 require "fileutils"
 require "twitter"
-require "mastodon"
+# require "mastodon"
 require "net/ping"
 
 

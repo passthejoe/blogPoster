@@ -629,15 +629,15 @@ menu = ["",
                 if @urlBool && length_ok
 				puts "Your post is not too long ..."
 					@yourText = @yourText.chomp
-					HTTP.auth("Bearer #{@mastdon_bearer_token}")
-						.post(@mastodon_base_url + "/api/vi/statuses", :params => {:status => @yourText + " " + @yourURL})
+					HTTP.auth("Bearer " + @mastodon_bearer_token)
+						.post(@mastodon_base_url + "/api/v1/statuses", :params => {:status => @yourText + " " + @yourURL})
         	      	puts "Post sent to Mastodon"
 					
                 elsif length_ok
                 	puts "Your post is not too long ..."
                 	@yourText = @yourText.chomp
-                	mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastodon_bearer_token)
-                	mastodon_client.create_status(@yourText, {:sensitive => false})
+                	HTTP.auth("Bearer " + @mastodon_bearer_token)
+						.post(@mastodon_base_url + "/api/v1/statuses", :params => {:status => @yourText})
                     	puts "Post sent to Mastodon"
                 
 				else

@@ -10,7 +10,7 @@ blogPoster can also create posts "from scratch," meaning you can begin by inputt
 
 The way the app is structured right now, it creates and formats posts for an [Ode](http://ode.io) blog and the [Twitter](http://twitter.com) and [Mastodon](https://joinmastodon.org/) social-media services. 
 
-**Update on 7/11/21:** While Mastodon posting works, the `mastodon-api` gem's problems, coupled with the fact that it is unmaintained, means I'm going to experiment with *updating* the `twitter` and `http` gems and *not* installing the `mastodon-api` gem to see how that configuration works in Ruby 3.x. It may be time to cut Mastodon support.
+**Update on 8/8/21:** Mastodon posting has been fixed. The code is much simpler, and I am no longer using the mastodon-api gem. Instead, posting is done with the http gem. Thanks to [this Python-focused article](https://dev.to/bitsrfr/getting-started-with-the-mastodon-api-41jj) for the idea. All I did was "translate" from Python to Ruby.
 
 I'm pretty sure you haven't heard of [Ode](http://ode.io), the Rob Reed-coded, Perl-based blogging software that is inspired by [Bloxsom](http://blosxom.sourceforge.net/) ([see a little more on Wikipedia](https://en.wikipedia.org/wiki/Blosxom)).
 
@@ -44,7 +44,7 @@ Install the following Ruby gems:
 * `Twitter`
 * `net-sftp`
 * `net-ping`
-* `mastodon-api`
+* `http`
 
 And if you are running this program on Windows, install this one too:
 
@@ -54,27 +54,9 @@ And if you are running this program on Windows, install this one too:
 
 And as I say above, on Windows computers, you'll have to add the `win32-security` gem. Using `gem install` to add `net-ping` doesn't "require" `win32-security`, but without it the script will crash.
 
-* On Debian/Ubuntu Linux systems, in order to successfully install the Mastodon gem with `sudo gem install mastodon-api`, you must first install the proper development tools:
-
-`$ sudo apt install ruby-dev gcc make g++`
-then ...
-`$ sudo gem install mastodon-api`
-	
-* There is a conflict between the `twitter` and `mastodon-api` Ruby gems. `twitter 7.0.0` and `mastodon-api` use different versions of the `http` gem, and the script crashes when both are installed. The current workaround is to install an older version of the `twitter` gem.
-
-And with Ruby 2.7.x, the `mastodon-api` gem is throwing errors but still works. The "rescue" statement that tells you whether or not a Mastodon toot has gone through always responds in the negative on Ruby 2.7, so I have added a statement that tells Ruby 2.7 users to check for their toots manually. That's the best I can do until the `mastodon-api` gem is fixed. And hopefully that fix will update the version of `http` so that `mastodon-api` and `twitter` can co-exist in their up-to-date versions. *(I need to update this paragraph to include the results for Ruby 3.0, which I'm testing right now.)*
-
-**Note about the twitter gem (if you are also installing the mastodon-api gem):**
-
-There is a conflict over version of the `http` gem between the `twitter` and `mastodon-api` gems. Eventually (I hope) the `mastodon-api` developers will fix their gem, but until then, only install version 7.0.0 of the `twitter` gem if you DON'T install the `mastodon-api` gem (and don't want to post to a Mastodon instance).
-
-Instead use the older version 6.2.0 of the `twitter` gem to avoid the `http` conflict:
-
-	$ gem install twitter -v 6.2.0
-
 **Note on Ruby Gems:** In response to a tweet about using Linux distribution packages to install Ruby gems, a couple of developers replied to say that they don't recommend using distribution-packaged gems, or even distribution-packaged Ruby. (Many favor the use of [RVM](https://rvm.io/), which is something I'm open to trying but haven't yet. But they definitely are in favor of getting gems via Ruby's `gem install` program. This README formerly contained a great deal of information on installing Ruby gems via Linux package managers, but now I'm using `gem install` for everything, so the documentation now reflects that.
 
-**Which version of Ruby?** As of Jan. 7, 2021, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5, 2.6 and 2.7 in Linux and 2.5, 2.6, 2.7 and 3.0 in Windows.
+**Which version of Ruby?** As of Jan. 7, 2021, blogPoster — with the proper Ruby gems installed — runs on Ruby 2.5, 2.6 and 2.7 and 3.0 in Linux and 2.5, 2.6, 2.7 and 3.0 in Windows.
 
 I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I have done some tests in MacOS, but I need to revisit them.
 

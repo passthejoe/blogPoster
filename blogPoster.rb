@@ -53,9 +53,8 @@
 #
 # nokogiri
 # net-sftp
-# twitter (version 6.2.0, NOT version 7.0.0, unless you are not interested in posting to Mastodon)
+# twitter
 # net-ping
-# mastodon-api
 #
 # and if you are running Windows:
 # win32-security
@@ -67,7 +66,6 @@ require "date"
 require "net/sftp"
 require "fileutils"
 require "twitter"
-require "mastodon"
 require "net/ping"
 
 
@@ -147,11 +145,7 @@ def welcome
 your microblog, Twitter and Mastodon."
 end
 
-#connected = are_we_connected?(@host_to_ping)
-
 # Welcome messages
-
-#puts "\nThe computer is connected to the internet (true/false): #{connected}"
 
 welcome
 
@@ -595,15 +589,16 @@ menu = ["",
             # Return to the menu
             runmenu
             
-        # Mastodon notes: The mastodon/mastodon-api gem and the twitter gem are causing
-        # some kind of conflict in Windows. Maybe try a newer Ruby to see if it
-        # can be resolved.
         #
-        # To install the mastodon-api gem in Debian first you need the ruby-dev package
-        # so you can build local gems:
+        # Mastodon posting
         #
-        # $ sudo apt install ruby-dev
-        # $ sudo apt gem install mastodon-api
+        # As of 8/8/2021, Mastodon posting is handled by the http gem instead of
+        # the mastodon-api gem, which hasn't been maintained in more than a year
+        # and hasn't worked well with Ruby since version 2.7. It also conflicts
+        # with the twitter gem v.7.
+        #
+        # Luckily it is easy to post to Mastodon with regular web calls,
+        # and it can all be done with the http gem.
         #
         # In the configuration file, @mastodon_base_url is the URL of your Mastodon instance
         # @mastodon_bearer_token is the token you need to access your Mastodon account
@@ -632,16 +627,16 @@ menu = ["",
                                 
                 if @urlBool && length_ok
 				puts "Your post is not too long ..."
-        	        @yourText = @yourText.chomp
-	               	mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastodon_bearer_token)
-			mastodon_client.create_status(@yourText + " " + @yourURL, {:sensitive => false})
-			puts "Post sent to Mastodon"
+					@yourText = @yourText.chomp
+					HTTP.auth("Bearer " + @mastodon_bearer_token)
+						.post(@mastodon_base_url + "/api/v1/statuses", :params => {:status => @yourText + " " + @yourURL})
+        	      	puts "Post sent to Mastodon"
 					
                 elsif length_ok
                 	puts "Your post is not too long ..."
                 	@yourText = @yourText.chomp
-                	mastodon_client = Mastodon::REST::Client.new(base_url: @mastodon_base_url, bearer_token: @mastodon_bearer_token)
-                	mastodon_client.create_status(@yourText, {:sensitive => false})
+                	HTTP.auth("Bearer " + @mastodon_bearer_token)
+						.post(@mastodon_base_url + "/api/v1/statuses", :params => {:status => @yourText})
                     	puts "Post sent to Mastodon"
                 
 				else
@@ -654,17 +649,12 @@ menu = ["",
 		rescue
 			puts "\nSomething happened with Mastodon"
 			puts "Your toot did not go through"
-			# ruby_number
-            #   if RUBY_VERSION.include? "2.7"
-			if @our_ruby_number >= 2.7
-               print "\n... unless you are running Ruby 2.7 or later,\nwhich this program says is the case.\n\nFor Mastodon users who are running\nRuby 2.7 or later, check your instance.\nIt is very likely your toot\nhas been posted.\n"
-		end
 		else
-			puts "Success!"
-	    end
+				puts "Success!"
+		end
 	       
-            # Return to the menu
-            runmenu
+        # Return to the menu
+        runmenu
             
         elsif yourTask == 'q'
             puts "Goodbye ..."

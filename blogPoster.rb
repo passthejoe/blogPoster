@@ -53,9 +53,8 @@
 #
 # nokogiri
 # net-sftp
-# twitter (version 6.2.0, NOT version 7.0.0, unless you are not interested in posting to Mastodon)
+# twitter
 # net-ping
-# mastodon-api
 #
 # and if you are running Windows:
 # win32-security
@@ -67,7 +66,7 @@ require "date"
 require "net/sftp"
 require "fileutils"
 require "twitter"
-# require "mastodon"
+require "http"
 require "net/ping"
 
 

@@ -590,16 +590,6 @@ menu = ["",
             # Return to the menu
             runmenu
             
-        # Mastodon notes: The mastodon/mastodon-api gem and the twitter gem are causing
-        # some kind of conflict in Windows. Maybe try a newer Ruby to see if it
-        # can be resolved.
-        #
-        # To install the mastodon-api gem in Debian first you need the ruby-dev package
-        # so you can build local gems:
-        #
-        # $ sudo apt install ruby-dev
-        # $ sudo apt gem install mastodon-api
-        #
         # In the configuration file, @mastodon_base_url is the URL of your Mastodon instance
         # @mastodon_bearer_token is the token you need to access your Mastodon account
         # on your instance.

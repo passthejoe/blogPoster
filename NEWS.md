@@ -1,5 +1,15 @@
 # blogPoster News
 
+#### Aug. 8, 2021
+
+* Mastodon posting no longer uses the mastodon-api gem. Instead, since it's so relatively easy to post to Mastodon, I'm using the http gem.
+
+* Inspiration/code for the new Mastodon posting method comes from this dev.to article that uses Python: <https://dev.to/bitsrfr/getting-started-with-the-mastodon-api-41jj>. I converted the code to Ruby.
+
+* This change resolves the issues with the mastodon-api gem and a) Ruby versions 2.7 or newer and b) the twitter gem, which has a conflict due to different http versions. All the app needs to do is post, so it's relatively easy to do it without the special gem.
+
+* I am *trying* to figure out how to post to Twitter without the twitter gem, but I haven't been able to figure that one out.
+
 #### July 19, 2020
 
 * I rewrote the method that checks whether a live internet connection is present and added it to the menu. It uses a case (aka switch) statement just because I wanted to try one.

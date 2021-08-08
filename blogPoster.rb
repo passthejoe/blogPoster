@@ -650,14 +650,9 @@ menu = ["",
 		rescue
 			puts "\nSomething happened with Mastodon"
 			puts "Your toot did not go through"
-			# ruby_number
-            #   if RUBY_VERSION.include? "2.7"
-			if @our_ruby_number >= 2.7
-               print "\n... unless you are running Ruby 2.7 or later,\nwhich this program says is the case.\n\nFor Mastodon users who are running\nRuby 2.7 or later, check your instance.\nIt is very likely your toot\nhas been posted.\n"
-		end
-			else
+		else
 				puts "Success!"
-			end
+		end
 	       
         # Return to the menu
         runmenu

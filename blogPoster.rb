@@ -146,11 +146,7 @@ def welcome
 your microblog, Twitter and Mastodon."
 end
 
-#connected = are_we_connected?(@host_to_ping)
-
 # Welcome messages
-
-#puts "\nThe computer is connected to the internet (true/false): #{connected}"
 
 welcome
 

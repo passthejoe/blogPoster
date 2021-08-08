@@ -66,7 +66,6 @@ require "date"
 require "net/sftp"
 require "fileutils"
 require "twitter"
-require "http"
 require "net/ping"
 
 

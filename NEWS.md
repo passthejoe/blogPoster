@@ -1,5 +1,9 @@
 # blogPoster News
 
+#### Aug. 9, 2021
+
+* There is now an [official release](https://github.com/passthejoe/blogPoster/releases) of blogPoster. [Version 1](https://github.com/passthejoe/blogPoster/releases/tag/v1.0) is available for download.
+
 #### Aug. 8, 2021
 
 * Mastodon posting no longer uses the mastodon-api gem. Instead, since it's so relatively easy to post to Mastodon, I'm using the http gem.

@@ -28,6 +28,10 @@ In case you're wondering where the idea of a *microblog* comes from, aside from 
 
 * **Manton Reece**, the creator of [Micro.blog](https://micro.blog): I really like [his writing](https://micro.blog/manton), and even though I had a hard time wrapping my head around what Micro.blog was actually going to become while Manton was planning it, the idea was intriguing. When it turned out that Micro.blog was a hosted subscription service and that apps for it would only be created for Apple devices, what Manton created gave me the push I needed to figure out how to do this on my own.
 
+#### Update on Aug. 9, 2021
+
+* There is now an [official release](https://github.com/passthejoe/blogPoster/releases) of blogPoster. [Version 1](https://github.com/passthejoe/blogPoster/releases/tag/v1.0) is available for download.
+
 ### This project is for learning
 
 I came up with this project to solve a problem. But another key purpose is to give me a reason to learn more programming and development skills. This is how I figure out Ruby, git and GitHub. What started as a purely imperative-style script is slowly incorporating Ruby modules and — hopefully in the near-future — classes.

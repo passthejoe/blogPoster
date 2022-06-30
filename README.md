@@ -64,6 +64,16 @@ And as I say above, on Windows computers, you'll have to add the `win32-security
 
 I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I have done some tests in MacOS, but I need to revisit them.
 
+### Tips for Fedora Linux users
+
+**Update on 4/16/2022:** To run **blogPoster** on Fedora Linux (last tested on F36 Silverblue), add the Ruby programming language, packages for the gems that are in the distribution, and a few development packages so you can build the Twitter gem when you install it with `gem install`:
+
+	$ sudo dnf install ruby ruby-devel gcc ruby-gem-nokigiri rubygem-net-sftp
+
+Then use `gem install` to add the gems you can't get in Fedora:
+
+	$ gem install net-ping twitter
+ 
 **Why does blogPoster use an external text editor, and which one should I choose?**
 
 The biggest variable is your choice of text editor, which the script uses to edit posts. I used the coding and testing of this script as an "excuse" to learn [Vim](https://www.vim.org), and I am glad I did. But the script works very well with other editors. It is *very* compatible with `Notepad` in Windows, though not as compatible with `Notepad++` as I'd like it to be.

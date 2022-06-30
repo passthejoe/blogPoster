@@ -1,5 +1,9 @@
 # blogPoster News
 
+#### April 16, 2022
+
+* I added instructions for installing the Ruby environment for Fedora Linux users. I'm currently running Fedora 36 Silverblue as my main operating system, and with Toolbx containers, it's possible to experiment with development environments without mucking up the main system. It's a great system for testing.
+
 #### Aug. 9, 2021
 
 * There is now an [official release](https://github.com/passthejoe/blogPoster/releases) of blogPoster. [Version 1](https://github.com/passthejoe/blogPoster/releases/tag/v1.0) is available for download.

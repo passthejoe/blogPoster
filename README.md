@@ -28,6 +28,10 @@ In case you're wondering where the idea of a *microblog* comes from, aside from 
 
 * **Manton Reece**, the creator of [Micro.blog](https://micro.blog): I really like [his writing](https://micro.blog/manton), and even though I had a hard time wrapping my head around what Micro.blog was actually going to become while Manton was planning it, the idea was intriguing. When it turned out that Micro.blog was a hosted subscription service and that apps for it would only be created for Apple devices, what Manton created gave me the push I needed to figure out how to do this on my own.
 
+#### Update on Feb. 27, 2023
+
+* In order to compile the twitter and http gems in Fedora, you need the gcc and gcc-c++ packages. I am editing this file below to reflect that.
+
 #### Update on Aug. 9, 2021
 
 * There is now an [official release](https://github.com/passthejoe/blogPoster/releases) of blogPoster. [Version 1](https://github.com/passthejoe/blogPoster/releases/tag/v1.0) is available for download.
@@ -68,11 +72,13 @@ I have tested the script *extensively* on Linux and Windows systems, and it work
 
 **Update on 4/16/2022:** To run **blogPoster** on Fedora Linux (last tested on F36 Silverblue), add the Ruby programming language, packages for the gems that are in the distribution, and a few development packages so you can build the Twitter gem when you install it with `gem install`:
 
-	$ sudo dnf install ruby ruby-devel gcc ruby-gem-nokigiri rubygem-net-sftp
+	$ sudo dnf install ruby ruby-devel gcc gcc-c++ ruby-gem-nokigiri rubygem-net-sftp
 
 Then use `gem install` to add the gems you can't get in Fedora:
 
 	$ gem install net-ping twitter
+
+**Note:** I don't think you have to *specifically* install the http gem because it is a dependency of the twitter gem and will be added when you install that one.
  
 **Why does blogPoster use an external text editor, and which one should I choose?**
 

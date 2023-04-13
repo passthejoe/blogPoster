@@ -36,6 +36,10 @@ In case you're wondering where the idea of a *microblog* comes from, aside from 
 
 * There is now an [official release](https://github.com/passthejoe/blogPoster/releases) of blogPoster. [Version 1](https://github.com/passthejoe/blogPoster/releases/tag/v1.0) is available for download.
 
+#### Update on April 13, 2023
+
+* It's been a long time since the last update. I added some tips on getting the Ruby environment set up on Debian. I just upgraded to Debian 12 (Bookworm), which is still the Testing distribution, though it will soon be the new Stable. No problems with blogPoster and Ruby 3.1.2.
+
 ### This project is for learning
 
 I came up with this project to solve a problem. But another key purpose is to give me a reason to learn more programming and development skills. This is how I figure out Ruby, git and GitHub. What started as a purely imperative-style script is slowly incorporating Ruby modules and — hopefully in the near-future — classes.

@@ -68,6 +68,16 @@ And as I say above, on Windows computers, you'll have to add the `win32-security
 
 I have tested the script *extensively* on Linux and Windows systems, and it works pretty much the same on both. I have done some tests in MacOS, but I need to revisit them.
 
+### Tips for Debian users
+
+To install the Twitter gem, you'll need a build environment. I always add the `ruby-dev` package, and you will need `gcc` and `make`. I think that installing gcc will bring in make as a dependency, but you can ensure you get it by using apt to install it:
+
+	$ sudo apt install ruby-dev gcc make
+	
+Then you'll need superuser privileges once gain to install the Twitter gem:
+
+	$ sudo gem install twitter
+
 ### Tips for Fedora Linux users
 
 **Update on 4/16/2022:** To run **blogPoster** on Fedora Linux (last tested on F36 Silverblue), add the Ruby programming language, packages for the gems that are in the distribution, and a few development packages so you can build the Twitter gem when you install it with `gem install`:

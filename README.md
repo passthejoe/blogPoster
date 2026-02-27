@@ -8,7 +8,11 @@ This is a *very* personal project that I use just about every day. Right now it'
 
 blogPoster can also create posts "from scratch," meaning you can begin by inputting a title and text without a URL. You can add any URL you want to any post and even change the URL on the post you're already working on.
 
-The way the app is structured right now, it creates and formats posts for an [Ode](http://ode.io) blog and the [Twitter](http://twitter.com) and [Mastodon](https://joinmastodon.org/) social-media services. 
+The way the app is structured right now, it creates and formats posts for an [Ode](http://ode.io) blog and the [Twitter](http://twitter.com) and [Mastodon](https://joinmastodon.org/) social-media services.
+
+**Update on 2/27/26:** Long time, no see. I brought back the blog this program feeds at <https://passthejoeupdates.nfshost.com>, and changed the configuration so blogPoster works with it again. Surprisingly, the script *still* successfully posts to Twitter and Mastodon. I can't believe that everything still works, though I found a few nasty bugs that I should try to fix. The bugs I found had to do with creating a "raw" post (meaning one with no http link) without using the `r` command in the menu. If I create a title and a text with the other menu choices, the post will fail when trying to write to disk. That should't happen. And writing the file should be more automatic and less something that the user needs to remember. It should just save whenever appropriate.
+
+Also, as I said on the News page, I'm thinking of a whole new blogPoster-type app that prioritizes writing and publishing into static site generators like Hugo and Zola. Ode's pretty dead. I'm not sure anybody but me is still using it, and it requires a server with Apache to run, as well as a proper Perl CGI setup. SSGs are the recent past as well as the present and near future, so it's really time for me to think about how I can streamline that workflow — hopefully with a GUI.
 
 **Update on 8/8/21:** Mastodon posting has been fixed. The code is much simpler, and I am no longer using the mastodon-api gem. Instead, posting is done with the http gem. Thanks to [this Python-focused article](https://dev.to/bitsrfr/getting-started-with-the-mastodon-api-41jj) for the idea. All I did was "translate" from Python to Ruby.
 

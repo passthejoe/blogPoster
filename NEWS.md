@@ -1,5 +1,23 @@
 # blogPoster News
 
+#### Feb. 26, 2026
+
+* As you can see from this timestamp, there hasn't been "news" in a long time. Today I tested blogPoster (and *used it*) for the first time in three years. The test was in a Debian Trixie (13.3) Distrobox with Ruby 3.3.8. All the Ruby Gems except for `net-ping` were installed as Debian packages (which is how I still prefer to set up Ruby — with as many distro packages as possible)
+
+I ran into some bugs. If you want to create a post without a URL, you need to select `r` for raw post. If you try to do a post by setting a title and then text, it will crash the program. I'm sure I could code around it, given time for me to re-learn how the program works.
+
+Remarkably, this script still successfully posts to Twitter (now X ... no comment), Mastodon and my Ode microblog. Ode is long dead — I don't know what happened to its developer, and the code is nowhere to be found (though I have it, of course). I can't believe my developer account still works with Twitter/X, where I stopped posting years ago at this point.
+
+The open social media movement known as the Fediverse has come so far along that there isn't as much of a need for blogPoster to send to social media, per se, but it's still a nice thing to have in a program that essential tries to streamline writing social-media style posts across multiple platforms.
+
+At this point I use client software on Android (Tusky) and Linux (Tuba) to read and create Fediverse posts, and those apps are way farther along than blogPoster ever got. But there's still no good way to easily create and post to static site generators like Hugo and Zola (both of which I use today), and that's where I'd like to focus next.
+
+I'm looking to create a GUI app that allows for quick creation of blog posts without needing to manually create files and (in my case) run scripts to build and post the output. I'd like it all to be done with clicks in the GUI so I could publish quickly. Then having the option of sending those entries to social sites would be the next step in development.
+
+There are maybe a half-dozen apps that offer GUIs for publishing on SSGs, but they all seem super complicated and also rely on Git-driven sites, and right now I'm not planning on putting a Git forge in between writing and publishing, so I still need to roll my own program.
+
+I never figured out how to *read old blog posts* with blogPoster, but maybe that's something I can work on in the future.
+
 #### April 16, 2022
 
 * I added instructions for installing the Ruby environment for Fedora Linux users. I'm currently running Fedora 36 Silverblue as my main operating system, and with Toolbx containers, it's possible to experiment with development environments without mucking up the main system. It's a great system for testing.
